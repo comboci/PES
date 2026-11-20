@@ -1,0 +1,56 @@
+{
+  "run_type": "isolated_PES15_integration_test",
+  "source": "/mnt/data/PES-15-Reference-Implementation/examples/portfolio_builder_legacy_v14_demo.json",
+  "source_is_portfolio_builder_repository_canonical": false,
+  "source_sha256_before": "3e41aa056055a063d02f2429be2f156d138b571475d1f0fc319ff76b76173011",
+  "source_sha256_after": "3e41aa056055a063d02f2429be2f156d138b571475d1f0fc319ff76b76173011",
+  "source_unchanged": true,
+  "legacy_records_exactly_preserved": true,
+  "legacy_scopes_exactly_preserved": true,
+  "legacy_relationships_exactly_preserved": true,
+  "record_counts": {
+    "statements": 1,
+    "ideas": 0,
+    "questions": 0,
+    "analyses": 0,
+    "solutions": 1,
+    "findings": 0,
+    "business_rules": 1,
+    "technical_contracts": 0,
+    "requirements": 0,
+    "decisions": 1,
+    "tasks": 1,
+    "evidence": 0,
+    "verifications": 0,
+    "acceptances": 0,
+    "observations": 1
+  },
+  "total_records": 6,
+  "scope_count": 6,
+  "legacy_unknown_priority_tasks": 1,
+  "legacy_unknown_time_observations": 1,
+  "legacy_untyped_relationships": 0,
+  "migration_valid": true,
+  "migration_warning_codes": [
+    "FRESHNESS_UNKNOWN",
+    "LEGACY_UNKNOWN"
+  ],
+  "retrieval_contract_used": "RETRIEVAL-PES15-FULL",
+  "retrieval_warning_codes": [
+    "UNVERIFIED_SOURCE_ALIGNMENT",
+    "UNVERIFIED_SOURCE_ALIGNMENT",
+    "HISTORIC_PRIORITY_UNKNOWN",
+    "HISTORIC_OBSERVATION_TIME_UNKNOWN",
+    "NO_OWNER_ACCEPTANCE_EVIDENCE"
+  ],
+  "demo_commit_revision": 2,
+  "stale_writer_rejected": true,
+  "sqlite_history_integrity_ok": true,
+  "sqlite_revisions": 2,
+  "verified_backup_revisions": 2,
+  "limitations": [
+    "No Portfolio Builder application code, build, or runtime is modified by this harness.",
+    "Legacy records are not automatically accepted/verified by their migration.",
+    "The representative fixture is a subset and includes one synthetic Task; the full GitHub snapshot requires --source pointing to a local copy."
+  ]
+}

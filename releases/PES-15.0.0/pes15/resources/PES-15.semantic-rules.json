@@ -1,0 +1,26 @@
+{
+  "standard": "PES-15",
+  "revision": "15.0.0",
+  "machine_enforced": [
+    "SCHEMA-IDENTITY", "RECORD-UNIQUENESS", "SCOPE-REFERENCES", "RECORD-REFERENCES",
+    "RELATIONSHIP-REFERENCES", "RETRIEVAL-REFERENCES", "NEW-TASK-PRIORITY",
+    "NEW-OBSERVATION-TIME", "PRESERVE-HISTORY", "CAS-WRITES", "ATOMIC-HISTORY",
+    "METADATA-DIGESTS", "PROTECT-LEGACY-EXCEPTIONS", "SCOPE-ACYCLIC"
+  ],
+  "reported_not_inferred": [
+    "SOURCE-FRESHNESS", "AUTHORITATIVE-ACCEPTANCE", "EVIDENCE-SUFFICIENCY",
+    "EXTERNAL-SOURCE-ALIGNMENT", "UNKNOWN-LEGACY-DATA"
+  ],
+  "axioms": [
+    "Verification never means owner acceptance.",
+    "Priority never authorizes execution.",
+    "A derived view cannot supersede canonical records.",
+    "Source, provenance, and legacy unknowns are not invented.",
+    "Migrating to PES-15 does not modify the PES-14 original or its consumers.",
+    "Proposals are distinct from decisions; code changes are distinct from runtime verification.",
+    "Unknown and stale information cannot be represented as verified live truth.",
+    "Canonical snapshots are never silently compacted or overwritten."
+  ],
+  "task_priorities": ["P0", "P1", "P2", "P3", "unassigned"],
+  "relationship_types": ["depends_on", "blocks", "implements", "supports", "verifies", "accepts", "supersedes", "conflicts_with", "derives_from", "relates_to"]
+}

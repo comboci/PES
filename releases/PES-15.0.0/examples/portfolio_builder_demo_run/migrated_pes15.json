@@ -1,0 +1,310 @@
+{
+  "_pes": {
+    "standard": "PES-15",
+    "schema_revision": "15.0.0",
+    "schema_digest": "fad97eb7073888eb08a644370d1fe4e22de41f0b3baf78d7d883909a2b562a45",
+    "semantic_rules_digest": "467b7020d3bcc383243fc8b5d7e79c6716ca276f5b99642cf05dea497108a931",
+    "compatibility_profile_digest": "8fc0e26a50ababa9688dbd1f406d3d1e6626c5b508da561cd3684e44ad6c9cd4",
+    "legacy_exceptions": {
+      "task_priority_missing": [
+        "TASK-DEMO-LEGACY-001"
+      ],
+      "observation_time_missing": [
+        "OBS-001"
+      ],
+      "relationship_legacy_indices": []
+    },
+    "migration": {
+      "source_standard": "PES-14",
+      "source_revision": "14.0.0",
+      "source_sha256": "c9bb275d7bf349e9505c3d164168d4c0acb95051a4f5348f50201b4dd4c0ec9f",
+      "source_schema_digest": "0461a63f0a08f299a0f8ece052f38cdc8848a1437b6f2d102be6ab0f187e4c7f",
+      "method": "opt_in_copy"
+    }
+  },
+  "project": {
+    "project_id": "NSP-PORTFOLIO-BUILDER",
+    "project_name": "NSP Portfolio Builder",
+    "namespace": "NSP-PB"
+  },
+  "artifact": {
+    "artifact_id": "PES14-PORTFOLIO-REPRESENTATIVE-TEST-FIXTURE",
+    "profile": "canonical_snapshot",
+    "lifecycle": "active",
+    "lineage_role": "root",
+    "acceptance_state": "draft",
+    "created_at": "2026-11-19T06:36:00Z",
+    "parent_artifact_ids": [],
+    "base_artifact_id": null,
+    "source_modification_authorized": false
+  },
+  "release_context": {
+    "software_release": "fixture_only",
+    "project_evolution_version": "PES-14",
+    "base_project_evolution_version": null
+  },
+  "coordination": {
+    "canonical_store_type": "test_fixture",
+    "canonical_store_ref": null,
+    "startup_document_ref": "PROJECT-EVOLUTION-START-HERE-PES-14.md",
+    "write_concurrency": "not_applicable_to_test"
+  },
+  "purpose": {
+    "primary_goal": {
+      "value": "Exercise PE-15 logic with selected Portfolio Builder domain facts",
+      "knowledge_state": "test_fixture_only"
+    },
+    "problem": {
+      "value": "Demonstrate safe migration, traceable retrieval and concurrent writers",
+      "knowledge_state": "test_fixture_only"
+    },
+    "success_criteria": [],
+    "intent_notes": []
+  },
+  "scopes": [
+    {
+      "scope_id": "SC-PROJECTS",
+      "scope_type": "module",
+      "name": "Project workspaces",
+      "parent_scope_ref": null,
+      "status": "active"
+    },
+    {
+      "scope_id": "SC-PORTFOLIOS",
+      "scope_type": "module",
+      "name": "Multiple portfolio documents",
+      "parent_scope_ref": null,
+      "status": "active"
+    },
+    {
+      "scope_id": "SC-LIBRARY",
+      "scope_type": "module",
+      "name": "Project and global image library",
+      "parent_scope_ref": null,
+      "status": "active"
+    },
+    {
+      "scope_id": "SC-TEMPLATES",
+      "scope_type": "module",
+      "name": "Master and page templates",
+      "parent_scope_ref": null,
+      "status": "active"
+    },
+    {
+      "scope_id": "SC-STORAGE",
+      "scope_type": "module",
+      "name": "Tauri and SQLite persistence",
+      "parent_scope_ref": null,
+      "status": "active"
+    },
+    {
+      "scope_id": "SC-ONCE",
+      "scope_type": "feature",
+      "name": "One-off and repeated elements",
+      "parent_scope_ref": null,
+      "status": "active"
+    }
+  ],
+  "records": {
+    "statements": [
+      {
+        "record_id": "ST-001",
+        "title": "System purpose",
+        "detail": "Author multiple architecture portfolios per project using globally reusable live-inherited templates and centrally managed image assets.",
+        "scope_refs": [
+          "SC-PROJECTS"
+        ],
+        "status": "approved_intent",
+        "provenance": {
+          "type": "user_conversation",
+          "date": "2026-11-19"
+        },
+        "implementation_state": "unverified_against_live_source"
+      }
+    ],
+    "ideas": [],
+    "questions": [],
+    "analyses": [],
+    "solutions": [
+      {
+        "record_id": "SOL-001",
+        "title": "Implementation direction",
+        "detail": "Use system-wide template entities and dependency tracking; propagate master changes to all descendants. Model assets, project ownership and usage references separately in SQLite; apply foreign keys and transactional cascades plus guarded asset garbage collection.",
+        "scope_refs": [
+          "SC-STORAGE"
+        ],
+        "status": "approved_intent",
+        "provenance": {
+          "type": "user_conversation",
+          "date": "2026-11-19"
+        },
+        "implementation_state": "unverified_against_live_source"
+      }
+    ],
+    "findings": [],
+    "business_rules": [
+      {
+        "record_id": "BR-001",
+        "title": "Page-specific once elements",
+        "detail": "Text Once and Image Once are page-only, never master-template elements; deleting the owning page deletes them.",
+        "scope_refs": [
+          "SC-ONCE"
+        ],
+        "status": "approved_intent",
+        "provenance": {
+          "type": "user_conversation",
+          "date": "2026-11-19"
+        },
+        "implementation_state": "unverified_against_live_source"
+      }
+    ],
+    "technical_contracts": [],
+    "requirements": [],
+    "decisions": [
+      {
+        "record_id": "DEC-001",
+        "title": "Project-first organization",
+        "detail": "Project is primary workspace and contains independent portfolios. Templates are defined in a centralized system-wide template library, independent of projects and portfolios.",
+        "scope_refs": [
+          "SC-PROJECTS"
+        ],
+        "status": "approved_intent",
+        "provenance": {
+          "type": "user_conversation",
+          "date": "2026-11-19"
+        },
+        "implementation_state": "unverified_against_live_source"
+      }
+    ],
+    "tasks": [
+      {
+        "record_id": "TASK-DEMO-LEGACY-001",
+        "title": "Synthetic historical task lacking priority",
+        "detail": "Demo-only record to exercise PES-14 historical missing priority; not a claim about an actual repository task.",
+        "scope_refs": [
+          "SC-STORAGE"
+        ],
+        "status": "planned",
+        "provenance": {
+          "type": "fixture_synthetic",
+          "date": "2026-11-19"
+        },
+        "implementation_state": "not_implemented"
+      }
+    ],
+    "evidence": [],
+    "verifications": [],
+    "acceptances": [],
+    "observations": [
+      {
+        "record_id": "OBS-001",
+        "title": "Owner V80 runtime review feedback",
+        "status": "source_only_addressed_except_autosave",
+        "detail": "V80 owner review: Add button left alignment, inherited-page count, layer-delete cascade, editor Library removal, project/public library selection and autosave with unsaved-exit protection requested. V81 source commits 2d657fb9 and 72c1b33b cover first five categories. Autosave toggle and warning remain pending. No owner acceptance yet.",
+        "scope_refs": [
+          "SC-TEMPLATES",
+          "SC-PORTFOLIOS",
+          "SC-LIBRARY"
+        ],
+        "provenance": {
+          "type": "user_runtime_report",
+          "date": "2026-11-19",
+          "source_revision_ref": "0f07fdbe7b5488205daa5901b5b793755dd6d6e2"
+        },
+        "implementation_state": "V81_source_changes_committed_runtime_unverified"
+      }
+    ]
+  },
+  "relationships": [],
+  "views": {
+    "current_architecture": {
+      "freshness_state": "unknown",
+      "note": "Fixture: not source-aligned"
+    },
+    "current_operational_context": {
+      "freshness_state": "unknown",
+      "note": "Fixture: not an operational live observation"
+    }
+  },
+  "retrieval": {
+    "contracts": [
+      {
+        "contract_id": "RETRIEVAL-DEFAULT",
+        "title": "Default PES-14 continuation context",
+        "subject_scope_refs": [],
+        "include_record_types": [
+          "business_rule",
+          "technical_contract",
+          "requirement",
+          "decision",
+          "solution",
+          "finding",
+          "question",
+          "verification",
+          "acceptance",
+          "observation",
+          "task"
+        ],
+        "required_views": [
+          "current_architecture"
+        ],
+        "relationship_depth": 2,
+        "current_only": false,
+        "require_source_alignment": true,
+        "output_profile": "standard"
+      },
+      {
+        "contract_id": "RETRIEVAL-PES15-FULL",
+        "title": "Complete PES-15 traceable continuation context",
+        "subject_scope_refs": [],
+        "include_record_types": [
+          "statement",
+          "idea",
+          "question",
+          "analysis",
+          "solution",
+          "finding",
+          "business_rule",
+          "technical_contract",
+          "requirement",
+          "decision",
+          "task",
+          "evidence",
+          "verification",
+          "acceptance",
+          "observation"
+        ],
+        "required_views": [
+          "current_architecture",
+          "current_operational_context"
+        ],
+        "relationship_depth": 2,
+        "current_only": false,
+        "require_source_alignment": true,
+        "output_profile": "standard"
+      }
+    ],
+    "default_contract_ref": "RETRIEVAL-DEFAULT"
+  },
+  "open_state": {
+    "open_question_ids": [],
+    "open_conflict_relationship_ids": [],
+    "blocked_record_ids": [],
+    "next_work_record_ids": [
+      "TASK-DEMO-LEGACY-001"
+    ],
+    "candidate_solution_ids": []
+  },
+  "continuation": {
+    "current_summary": "Non-authoritative miniature integration fixture for PES-15; not the real repository canonical record.",
+    "must_read_record_ids": [
+      "DEC-001",
+      "BR-001"
+    ],
+    "known_limits": [
+      "Selected historical facts adapted from NSP-Portfolio-Builder PE14 as inspected on 2026-11-20.",
+      "A synthetic historical task demonstrates missing priority; this is not a live Task ID.",
+      "This partial test fixture is not a replacement for the full GitHub canonical snapshot."
+    ]
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "standard": "PES-15",
+  "schema_revision": "15.0.0",
+  "package_role": "standalone_reference_implementation",
+  "build_date": "2026-11-20",
+  "legacy_PES14_original_zip_sha256": "1a25c34d07c3548c70078a050a4ded130d25e7f252536fe0c6159fca3118732e",
+  "legacy_PES14_mutated": false,
+  "manifest_self_excluded": true,
+  "files": [
+    {
+      "path": ".gitignore",
+      "size_bytes": 88,
+      "sha256": "d1f6480f0fb462c0d125a7cbe4b2ed75021946b64f5fb119d22632058c62e1fa"
+    },
+    {
+      "path": "CHANGELOG-PES-15-FA.md",
+      "size_bytes": 2664,
+      "sha256": "df9b45348f0a453b22718020c30b24c49a34769cece71e9f51c92468a09aeeec"
+    },
+    {
+      "path": "PES-15-STANDARD.md",
+      "size_bytes": 7091,
+      "sha256": "03c19d357ddf241905c40f1847db07879a4f5ab7a16ada25ef50d11c091fe2e1"
+    },
+    {
+      "path": "PES-15-START-HERE.md",
+      "size_bytes": 1369,
+      "sha256": "ff90c2e805a6908f41a03270cfb257d64e8c0472cf748d012bb96eea7466ce13"
+    },
+    {
+      "path": "PORTFOLIO-BUILDER-INTEGRATION-FA.md",
+      "size_bytes": 6141,
+      "sha256": "7ce22e4a91b6b1495cff75fcdea4578fb812d2d5c632974b02d65ba793b91067"
+    },
+    {
+      "path": "README-FA.md",
+      "size_bytes": 8927,
+      "sha256": "2ffc70c516a33b33ccbe3252aee85792b416b61b856e8f761d2f66f8348c0321"
+    },
+    {
+      "path": "Run-PES15-Demo.cmd",
+      "size_bytes": 546,
+      "sha256": "9a753d13a9fa8a84bb566d1b28505cb07c30b607e41f6798da096b7d8399838e"
+    },
+    {
+      "path": "Run-PES15-Tests.cmd",
+      "size_bytes": 542,
+      "sha256": "502621f392fcb63bb803761f54a2111c0ac6a50ebf005281407d207e35913dda"
+    },
+    {
+      "path": "TEST-RESULTS-PES-15.md",
+      "size_bytes": 4016,
+      "sha256": "b4074732e75aca6c847211c217e2081b0444cdd8ab5160f6bb4d935adac7c02e"
+    },
+    {
+      "path": "examples/GITHUB-READONLY-AUDIT-2026-11-20.json",
+      "size_bytes": 1115,
+      "sha256": "bb02442183a8af5ee2db3cdc69c07d00a1be61302341c9dd31a60acb395ee69d"
+    },
+    {
+      "path": "examples/PES-15-empty-bootstrap.json",
+      "size_bytes": 3306,
+      "sha256": "4ebafbf3b9352987913d751e18a8b2d9c64e0e85d071430f9c6ab0503a705bd5"
+    },
+    {
+      "path": "examples/portfolio_builder_demo_run/context_pes15.json",
+      "size_bytes": 3705,
+      "sha256": "ba3625ddba7778c85894e2a8c4aa6642ab40e36d0125f58f6e06ea4c3721656b"
+    },
+    {
+      "path": "examples/portfolio_builder_demo_run/demo_backup.sqlite",
+      "size_bytes": 36864,
+      "sha256": "5ba423e84a028c85925b4ee5e43518937caa44b7d4c8abfb638069437096623b"
+    },
+    {
+      "path": "examples/portfolio_builder_demo_run/demo_canonical.sqlite",
+      "size_bytes": 36864,
+      "sha256": "fa592946a32a4697c44e33fbcabc2a297b6642750f2ccc9f82a4b44156b01ec4"
+    },
+    {
+      "path": "examples/portfolio_builder_demo_run/demo_head.json",
+      "size_bytes": 10363,
+      "sha256": "0f43d015ab702b5400a485c3709dc08002f9ecb94bf08939cff1784f8dfcea2a"
+    },
+    {
+      "path": "examples/portfolio_builder_demo_run/integration_report.json",
+      "size_bytes": 1953,
+      "sha256": "9f019cd84e8ea15555a86eafb9304fcaeda55e4b1f63b172652cec5260cde413"
+    },
+    {
+      "path": "examples/portfolio_builder_demo_run/migrated_pes15.json",
+      "size_bytes": 9849,
+      "sha256": "6c32c51571a9ecb9f392e65cfb3302bcecc33955379fff230add8ca6e5c80d26"
+    },
+    {
+      "path": "examples/portfolio_builder_legacy_v14_demo.json",
+      "size_bytes": 8510,
+      "sha256": "3e41aa056055a063d02f2429be2f156d138b571475d1f0fc319ff76b76173011"
+    },
+    {
+      "path": "examples/portfolio_builder_migrated_v15_demo.json",
+      "size_bytes": 9849,
+      "sha256": "6c32c51571a9ecb9f392e65cfb3302bcecc33955379fff230add8ca6e5c80d26"
+    },
+    {
+      "path": "integration/github/PES15-adoption-notes.md",
+      "size_bytes": 851,
+      "sha256": "22a19b6443f75e10d8a28b08d88f02345a84d382ea6998729d431e103bfa48da"
+    },
+    {
+      "path": "pes15/__init__.py",
+      "size_bytes": 95,
+      "sha256": "9a9dc6dcf86da714947f30030c758f8e5d622c89ab439ca2eb5a207d1cb393ec"
+    },
+    {
+      "path": "pes15/__main__.py",
+      "size_bytes": 47,
+      "sha256": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4"
+    },
+    {
+      "path": "pes15/cli.py",
+      "size_bytes": 7263,
+      "sha256": "2ef2384acfacb19305ca1c30b2ab75398df218da373c6a4669568c892df1904f"
+    },
+    {
+      "path": "pes15/core.py",
+      "size_bytes": 4509,
+      "sha256": "62ec31351e05dce8bf771c2eba7fafeb0c53b68aefa37c910b66952ee1016319"
+    },
+    {
+      "path": "pes15/migration.py",
+      "size_bytes": 3084,
+      "sha256": "d5b61329fb02c9d3a03cb33afa14416e4fa2bb12a8536d454dd8b8b0b40bc14e"
+    },
+    {
+      "path": "pes15/resources/PES-15.compatibility-profile.json",
+      "size_bytes": 969,
+      "sha256": "8fc0e26a50ababa9688dbd1f406d3d1e6626c5b508da561cd3684e44ad6c9cd4"
+    },
+    {
+      "path": "pes15/resources/PES-15.schema.json",
+      "size_bytes": 17277,
+      "sha256": "fad97eb7073888eb08a644370d1fe4e22de41f0b3baf78d7d883909a2b562a45"
+    },
+    {
+      "path": "pes15/resources/PES-15.semantic-rules.json",
+      "size_bytes": 1347,
+      "sha256": "467b7020d3bcc383243fc8b5d7e79c6716ca276f5b99642cf05dea497108a931"
+    },
+    {
+      "path": "pes15/retrieval.py",
+      "size_bytes": 5942,
+      "sha256": "1191b04da1aa92872d5576a666aed76c969d54a2ebf4b4364ef5e7c990a226fe"
+    },
+    {
+      "path": "pes15/store.py",
+      "size_bytes": 10811,
+      "sha256": "7e293a3b3ae562bae23c9e7d9d6189fac9382560f8ed3706e03f262231866c4f"
+    },
+    {
+      "path": "pes15/validation.py",
+      "size_bytes": 19934,
+      "sha256": "118cd2698474580881fa9418d3b55faccdbe84f0098f992239b8a909609126ec"
+    },
+    {
+      "path": "pyproject.toml",
+      "size_bytes": 503,
+      "sha256": "a19484c90eda9bab9377d2dc9326f5dc14297ac692df669a910354a506450f37"
+    },
+    {
+      "path": "requirements.txt",
+      "size_bytes": 20,
+      "sha256": "48bdd1a500202e6cd681cb6e978b2c525ce9fb262013f8ff4a9bd2bb46419130"
+    },
+    {
+      "path": "tests/test_pes15_engine.py",
+      "size_bytes": 26766,
+      "sha256": "bd286e6f769ad777dc294bf19633100e09898b74ea2a15a310861f31e220286b"
+    },
+    {
+      "path": "tools/build_examples.py",
+      "size_bytes": 6720,
+      "sha256": "c97203259c480464a46a0751227d4b998f33692513622784a46333fd9a5fdb20"
+    },
+    {
+      "path": "tools/build_manifest.py",
+      "size_bytes": 1307,
+      "sha256": "a6341e904569c6a1ccc5d996b012d0a0da4a6bb0ab8e96f446df92ff61c2b4e4"
+    },
+    {
+      "path": "tools/evaluate_portfolio_builder.py",
+      "size_bytes": 6304,
+      "sha256": "07e08a13bcd99260518cec4cc1628b005f72029894ce1060131882da4283e48f"
+    }
+  ]
+}

@@ -1,0 +1,771 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:project-evolution:pes15:15.0.0:schema",
+  "title": "Project Evolution Standard PES-15 — Canonical Snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "_pes",
+    "project",
+    "artifact",
+    "release_context",
+    "coordination",
+    "purpose",
+    "scopes",
+    "records",
+    "relationships",
+    "views",
+    "retrieval",
+    "open_state",
+    "continuation"
+  ],
+  "properties": {
+    "_pes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "standard",
+        "schema_revision",
+        "schema_digest",
+        "semantic_rules_digest",
+        "compatibility_profile_digest",
+        "legacy_exceptions"
+      ],
+      "properties": {
+        "standard": {
+          "const": "PES-15"
+        },
+        "schema_revision": {
+          "const": "15.0.0"
+        },
+        "schema_digest": {
+          "$ref": "#/$defs/sha256"
+        },
+        "semantic_rules_digest": {
+          "$ref": "#/$defs/sha256"
+        },
+        "compatibility_profile_digest": {
+          "$ref": "#/$defs/sha256"
+        },
+        "legacy_exceptions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "task_priority_missing",
+            "observation_time_missing",
+            "relationship_legacy_indices"
+          ],
+          "properties": {
+            "task_priority_missing": {
+              "$ref": "#/$defs/referenceList"
+            },
+            "observation_time_missing": {
+              "$ref": "#/$defs/referenceList"
+            },
+            "relationship_legacy_indices": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "uniqueItems": true
+            }
+          }
+        },
+        "migration": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_standard",
+            "source_revision",
+            "source_sha256",
+            "source_schema_digest",
+            "method"
+          ],
+          "properties": {
+            "source_standard": {
+              "const": "PES-14"
+            },
+            "source_revision": {
+              "type": "string"
+            },
+            "source_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "source_schema_digest": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "method": {
+              "const": "opt_in_copy"
+            }
+          }
+        }
+      }
+    },
+    "project": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "project_id",
+        "project_name",
+        "namespace"
+      ],
+      "properties": {
+        "project_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "project_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "namespace": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "artifact_id",
+        "profile",
+        "lifecycle",
+        "lineage_role",
+        "acceptance_state",
+        "created_at",
+        "parent_artifact_ids",
+        "base_artifact_id",
+        "source_modification_authorized"
+      ],
+      "properties": {
+        "artifact_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "profile": {
+          "enum": [
+            "bootstrap_template",
+            "canonical_snapshot",
+            "analysis_overlay"
+          ]
+        },
+        "lifecycle": {
+          "enum": [
+            "active",
+            "historical",
+            "retired"
+          ]
+        },
+        "lineage_role": {
+          "enum": [
+            "root",
+            "branch",
+            "merge",
+            "canonical_head",
+            "overlay"
+          ]
+        },
+        "acceptance_state": {
+          "enum": [
+            "draft",
+            "accepted",
+            "rejected"
+          ]
+        },
+        "created_at": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        },
+        "parent_artifact_ids": {
+          "$ref": "#/$defs/referenceList"
+        },
+        "base_artifact_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_modification_authorized": {
+          "type": "boolean"
+        }
+      }
+    },
+    "release_context": {
+      "type": "object"
+    },
+    "coordination": {
+      "type": "object"
+    },
+    "purpose": {
+      "type": "object"
+    },
+    "scopes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "scope_id",
+          "scope_type",
+          "name",
+          "parent_scope_ref",
+          "status"
+        ],
+        "properties": {
+          "scope_id": {
+            "$ref": "#/$defs/nonblank"
+          },
+          "scope_type": {
+            "enum": [
+              "domain",
+              "module",
+              "feature",
+              "entity",
+              "service",
+              "integration",
+              "environment",
+              "codebase",
+              "other"
+            ]
+          },
+          "name": {
+            "$ref": "#/$defs/nonblank"
+          },
+          "parent_scope_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "enum": [
+              "active",
+              "superseded",
+              "retired",
+              "unknown"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "records": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "statements",
+        "ideas",
+        "questions",
+        "analyses",
+        "solutions",
+        "findings",
+        "business_rules",
+        "technical_contracts",
+        "requirements",
+        "decisions",
+        "tasks",
+        "evidence",
+        "verifications",
+        "acceptances",
+        "observations"
+      ],
+      "properties": {
+        "statements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/baseRecord"
+          }
+        },
+        "ideas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/baseRecord"
+          }
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/baseRecord"
+          }
+        },
+        "analyses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/baseRecord"
+          }
+        },
+        "solutions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/baseRecord"
+          }
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/findingRecord"
+          }
+        },
+        "business_rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/baseRecord"
+          }
+        },
+        "technical_contracts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/baseRecord"
+          }
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/baseRecord"
+          }
+        },
+        "decisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/baseRecord"
+          }
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/taskRecord"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/baseRecord"
+          }
+        },
+        "verifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/baseRecord"
+          }
+        },
+        "acceptances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/baseRecord"
+          }
+        },
+        "observations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/observationRecord"
+          }
+        }
+      }
+    },
+    "relationships": {
+      "type": "array",
+      "items": {}
+    },
+    "views": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "current_architecture",
+        "current_operational_context"
+      ],
+      "properties": {
+        "current_architecture": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "current_operational_context": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      }
+    },
+    "retrieval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contracts",
+        "default_contract_ref"
+      ],
+      "properties": {
+        "contracts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/retrievalContract"
+          }
+        },
+        "default_contract_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "open_state": {
+      "type": "object"
+    },
+    "continuation": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "nonblank": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "referenceList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonblank"
+      },
+      "uniqueItems": true
+    },
+    "provenance": {
+      "type": "object",
+      "minProperties": 1,
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/nonblank"
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "source_revision_ref": {
+          "$ref": "#/$defs/nonblank"
+        },
+        "source_ref": {
+          "$ref": "#/$defs/nonblank"
+        },
+        "record_refs": {
+          "$ref": "#/$defs/referenceList"
+        }
+      },
+      "additionalProperties": true
+    },
+    "baseRecord": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "title",
+        "detail",
+        "status",
+        "provenance"
+      ],
+      "properties": {
+        "record_id": {
+          "$ref": "#/$defs/nonblank"
+        },
+        "title": {
+          "$ref": "#/$defs/nonblank"
+        },
+        "detail": {
+          "$ref": "#/$defs/nonblank"
+        },
+        "status": {
+          "$ref": "#/$defs/nonblank"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "scope_refs": {
+          "$ref": "#/$defs/referenceList"
+        },
+        "related_record_ids": {
+          "$ref": "#/$defs/referenceList"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/referenceList"
+        },
+        "implementation_state": {
+          "$ref": "#/$defs/nonblank"
+        },
+        "source_revision_ref": {
+          "$ref": "#/$defs/nonblank"
+        },
+        "source_revision_refs": {
+          "$ref": "#/$defs/referenceList"
+        }
+      },
+      "additionalProperties": true
+    },
+    "taskRecord": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseRecord"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "priority": {
+              "enum": [
+                "P0",
+                "P1",
+                "P2",
+                "P3",
+                "unassigned"
+              ]
+            },
+            "completed_on": {
+              "type": "string",
+              "format": "date"
+            },
+            "updated_on": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        }
+      ]
+    },
+    "observationRecord": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseRecord"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "observed_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "confirmed_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "valid_from": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "valid_until": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "freshness_state": {
+              "$ref": "#/$defs/nonblank"
+            }
+          }
+        }
+      ]
+    },
+    "findingRecord": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseRecord"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "category": {
+              "enum": [
+                "general",
+                "code_review",
+                "implementation",
+                "runtime",
+                "security",
+                "data_integrity",
+                "architecture",
+                "performance",
+                "operations",
+                "other"
+              ]
+            },
+            "profile": {
+              "$ref": "#/$defs/nonblank"
+            }
+          }
+        }
+      ]
+    },
+    "relationship": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "relationship_id",
+        "source_ref",
+        "relation_type",
+        "status"
+      ],
+      "properties": {
+        "relationship_id": {
+          "$ref": "#/$defs/nonblank"
+        },
+        "source_ref": {
+          "$ref": "#/$defs/nonblank"
+        },
+        "target_ref": {
+          "$ref": "#/$defs/nonblank"
+        },
+        "relation_type": {
+          "enum": [
+            "depends_on",
+            "blocks",
+            "implements",
+            "supports",
+            "verifies",
+            "accepts",
+            "supersedes",
+            "conflicts_with",
+            "derives_from",
+            "relates_to"
+          ]
+        },
+        "status": {
+          "$ref": "#/$defs/nonblank"
+        },
+        "target_external_ref": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "namespace",
+            "object_id"
+          ],
+          "properties": {
+            "namespace": {
+              "$ref": "#/$defs/nonblank"
+            },
+            "object_id": {
+              "$ref": "#/$defs/nonblank"
+            },
+            "source_uri": {
+              "type": "string",
+              "format": "uri"
+            },
+            "source_revision_ref": {
+              "$ref": "#/$defs/nonblank"
+            }
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "target_ref"
+          ],
+          "not": {
+            "required": [
+              "target_external_ref"
+            ]
+          }
+        },
+        {
+          "required": [
+            "target_external_ref"
+          ],
+          "not": {
+            "required": [
+              "target_ref"
+            ]
+          }
+        }
+      ]
+    },
+    "retrievalContract": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "contract_id",
+        "title",
+        "subject_scope_refs",
+        "include_record_types",
+        "required_views",
+        "relationship_depth",
+        "current_only",
+        "require_source_alignment",
+        "output_profile"
+      ],
+      "properties": {
+        "contract_id": {
+          "$ref": "#/$defs/nonblank"
+        },
+        "title": {
+          "$ref": "#/$defs/nonblank"
+        },
+        "subject_scope_refs": {
+          "$ref": "#/$defs/referenceList"
+        },
+        "include_record_types": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "statement",
+              "idea",
+              "question",
+              "analysis",
+              "solution",
+              "finding",
+              "business_rule",
+              "technical_contract",
+              "requirement",
+              "decision",
+              "task",
+              "evidence",
+              "verification",
+              "acceptance",
+              "observation"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "required_views": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "current_architecture",
+              "current_operational_context"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "relationship_depth": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "current_only": {
+          "type": "boolean"
+        },
+        "require_source_alignment": {
+          "type": "boolean"
+        },
+        "output_profile": {
+          "$ref": "#/$defs/nonblank"
+        }
+      }
+    }
+  }
+}
