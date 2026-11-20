@@ -1,0 +1,38 @@
+{
+  "package": "Project Evolution Standard PES-13 Portable Distribution",
+  "standard": "PES-13",
+  "schema_revision": "13.0.0",
+  "generated_at": "2026-11-11T13:16:08Z",
+  "files": [
+    {
+      "name": "Project-Evolution-Empty-Bootstrap-PES-13.json",
+      "sha256": "f064cbb8d2b1c02ee7cde0c120054a872ab57b9ac07a3b1b448761e1de980cc3",
+      "size_bytes": 4467
+    },
+    {
+      "name": "PES-13.schema.json",
+      "sha256": "cd6d8b9c2750cab4dc99dcaad1cc665c0c23e3c57957af7f6acbc6c1408ec32f",
+      "size_bytes": 53851
+    },
+    {
+      "name": "PES-13.semantic-rules.json",
+      "sha256": "f8cc485724c5f81e9808b36b3d575f07a7f191d8e820c091ba6eeb5c38da6227",
+      "size_bytes": 6198
+    },
+    {
+      "name": "PES-13.compatibility-profile.json",
+      "sha256": "b6eda627088d50e3e4ecfa532484f4832d269c914fe622432b321abf734fe990",
+      "size_bytes": 1120
+    },
+    {
+      "name": "PROJECT-EVOLUTION-START-HERE-PES-13.md",
+      "sha256": "e56604bebefed6c1764561c477ce817f6c616c91fe4ad17132aec56c55cfdd18",
+      "size_bytes": 6434
+    },
+    {
+      "name": "README-INTEGRATION.md",
+      "sha256": "ea496a85b28fbf93ef428908c32a56e4553ddd7278a8830c29d842391540ddfd",
+      "size_bytes": 1173
+    }
+  ]
+}

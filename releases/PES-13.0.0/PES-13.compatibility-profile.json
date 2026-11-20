@@ -1,0 +1,23 @@
+{
+  "standard": "PES-13",
+  "schema_revision": "13.0.0",
+  "profile": "portable-default",
+  "migration_from": [
+    "PES-12",
+    "PES-11",
+    "PES-10",
+    "PES-9"
+  ],
+  "rules": [
+    "PES-13 is additive over PES-12; do not destructively rewrite historical records solely to normalize shape.",
+    "Existing Task priorities map for migration only: critical→P0, high→P1, medium→P2, low→P3.",
+    "Existing P0/P1/P2/P3 values remain unchanged.",
+    "If historical Task priority is absent and cannot be authoritatively recovered, migrate it as unassigned.",
+    "execution_order is not derived from priority unless an explicit project rule says so.",
+    "Git/GitHub is not required by PES Core.",
+    "A project-specific START-HERE/Help document may specialize the generic startup contract without changing PES semantics.",
+    "Verification and Acceptance remain distinct during migration.",
+    "A proposed Solution must not become selected without an attributable Decision.",
+    "Semantic hashing remains optional until a canonical serialization profile is separately frozen and test-vector-backed."
+  ]
+}

@@ -1,0 +1,2441 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-evolution.dev/schema/pes-13.schema.json",
+  "title": "Project Evolution Standard PES-13",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "_pes",
+    "minimum_embedded_contract",
+    "project",
+    "artifact",
+    "release_context",
+    "coordination",
+    "purpose",
+    "actors",
+    "sessions",
+    "codebases",
+    "source_revisions",
+    "records",
+    "relationships",
+    "material_change_events",
+    "open_state",
+    "evolution_ledger",
+    "continuation"
+  ],
+  "properties": {
+    "_pes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "standard",
+        "schema_revision",
+        "schema_digest",
+        "semantic_rules_digest",
+        "compatibility_profile_digest"
+      ],
+      "properties": {
+        "standard": {
+          "const": "PES-13"
+        },
+        "schema_revision": {
+          "const": "13.0.0"
+        },
+        "schema_digest": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "semantic_rules_digest": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "compatibility_profile_digest": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "minimum_embedded_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "purpose",
+        "core_rules"
+      ],
+      "properties": {
+        "purpose": {
+          "type": "string"
+        },
+        "core_rules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "project_id",
+        "project_name",
+        "namespace",
+        "created_identity"
+      ],
+      "properties": {
+        "project_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "project_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "namespace": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created_identity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "knowledge_state"
+          ],
+          "properties": {
+            "value": {},
+            "knowledge_state": {
+              "enum": [
+                "known",
+                "unknown",
+                "unavailable",
+                "not_applicable",
+                "not_yet_determined"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_id",
+        "profile",
+        "lifecycle",
+        "lineage_role",
+        "acceptance_state",
+        "created_at",
+        "lineage",
+        "base_artifact_id",
+        "analysis_overlay_revision",
+        "source_modification_authorized",
+        "semantic_hash",
+        "semantic_hash_profile"
+      ],
+      "properties": {
+        "artifact_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "profile": {
+          "enum": [
+            "bootstrap_template",
+            "canonical_snapshot",
+            "analysis_overlay"
+          ]
+        },
+        "lifecycle": {
+          "enum": [
+            "active",
+            "historical",
+            "retired"
+          ]
+        },
+        "lineage_role": {
+          "enum": [
+            "root",
+            "branch",
+            "merge",
+            "canonical_head",
+            "overlay"
+          ]
+        },
+        "acceptance_state": {
+          "enum": [
+            "draft",
+            "accepted",
+            "rejected"
+          ]
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "lineage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "parent_artifact_ids"
+          ],
+          "properties": {
+            "parent_artifact_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "base_artifact_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "analysis_overlay_revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_modification_authorized": {
+          "type": "boolean"
+        },
+        "semantic_hash": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "semantic_hash_profile": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "release_context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "software_release",
+        "project_evolution_version",
+        "base_project_evolution_version"
+      ],
+      "properties": {
+        "software_release": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "project_evolution_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "base_project_evolution_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "coordination": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_store_type",
+        "canonical_store_ref",
+        "startup_document_ref",
+        "write_concurrency",
+        "commit_contract_ref"
+      ],
+      "properties": {
+        "canonical_store_type": {
+          "enum": [
+            "git_branch",
+            "pe_manager",
+            "filesystem",
+            "other",
+            "unconfigured"
+          ]
+        },
+        "canonical_store_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "startup_document_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "write_concurrency": {
+          "enum": [
+            "compare_and_merge",
+            "server_revision",
+            "single_writer",
+            "unconfigured"
+          ]
+        },
+        "commit_contract_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "purpose": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_goal",
+        "problem",
+        "success_criteria",
+        "intent_notes"
+      ],
+      "properties": {
+        "primary_goal": {
+          "$ref": "#/$defs/knowledgeValueString"
+        },
+        "problem": {
+          "$ref": "#/$defs/knowledgeValueString"
+        },
+        "success_criteria": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/knowledgeValueString"
+          }
+        },
+        "intent_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "actors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/actor"
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/session"
+      }
+    },
+    "codebases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/codebase"
+      }
+    },
+    "source_revisions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/sourceRevision"
+      }
+    },
+    "records": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "statements",
+        "ideas",
+        "questions",
+        "analyses",
+        "solutions",
+        "findings",
+        "requirements",
+        "decisions",
+        "tasks",
+        "evidence",
+        "verifications",
+        "acceptances"
+      ],
+      "properties": {
+        "statements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/statementRecord"
+          }
+        },
+        "ideas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ideaRecord"
+          }
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/questionRecord"
+          }
+        },
+        "analyses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/analysisRecord"
+          }
+        },
+        "solutions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/solutionRecord"
+          }
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/findingRecord"
+          }
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/requirementRecord"
+          }
+        },
+        "decisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/decisionRecord"
+          }
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/taskRecord"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceRecord"
+          }
+        },
+        "verifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/verificationRecord"
+          }
+        },
+        "acceptances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/acceptanceRecord"
+          }
+        }
+      }
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/relationship"
+      }
+    },
+    "material_change_events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/changeEvent"
+      }
+    },
+    "open_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "open_question_ids",
+        "open_conflict_relationship_ids",
+        "blocked_record_ids",
+        "next_work_record_ids",
+        "candidate_solution_ids"
+      ],
+      "properties": {
+        "open_question_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "open_conflict_relationship_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "blocked_record_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "next_work_record_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "candidate_solution_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "evolution_ledger": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evolutionEntry"
+      }
+    },
+    "continuation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "current_summary",
+        "must_read_record_ids",
+        "known_limits"
+      ],
+      "properties": {
+        "current_summary": {
+          "type": "string"
+        },
+        "must_read_record_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "known_limits": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "knowledgeValueString": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "knowledge_state"
+      ],
+      "properties": {
+        "value": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "knowledge_state": {
+          "enum": [
+            "known",
+            "unknown",
+            "unavailable",
+            "not_applicable",
+            "not_yet_determined"
+          ]
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "actor_id",
+        "session_id",
+        "source_refs"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "known",
+            "partial",
+            "unknown"
+          ]
+        },
+        "actor_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "session_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actor_id",
+        "actor_type",
+        "display_name",
+        "aliases"
+      ],
+      "properties": {
+        "actor_id": {
+          "type": "string"
+        },
+        "actor_type": {
+          "enum": [
+            "human",
+            "developer",
+            "reviewer",
+            "ai",
+            "tool",
+            "system_process"
+          ]
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id",
+        "session_type",
+        "title",
+        "start_at",
+        "end_at",
+        "participant_actor_ids",
+        "topics",
+        "summary",
+        "status"
+      ],
+      "properties": {
+        "session_id": {
+          "type": "string"
+        },
+        "session_type": {
+          "type": "string"
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "start_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "end_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "participant_actor_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "topics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "summary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "open",
+            "closed"
+          ]
+        }
+      }
+    },
+    "codebase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "codebase_id",
+        "name",
+        "repository_identity"
+      ],
+      "properties": {
+        "codebase_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "repository_identity": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "sourceRevision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_revision_id",
+        "codebase_id",
+        "revision_kind",
+        "commit_id",
+        "tree_id",
+        "source_artifact_id",
+        "source_artifact_digest",
+        "captured_at"
+      ],
+      "properties": {
+        "source_revision_id": {
+          "type": "string"
+        },
+        "codebase_id": {
+          "type": "string"
+        },
+        "revision_kind": {
+          "enum": [
+            "git_commit",
+            "source_artifact",
+            "other_vcs_revision",
+            "mixed"
+          ]
+        },
+        "commit_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tree_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_artifact_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_artifact_digest": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "captured_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "statementRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "record_type",
+        "record_revision",
+        "lifecycle",
+        "created_at",
+        "created_by_actor_id",
+        "last_material_change_at",
+        "provenance",
+        "source_revision_refs",
+        "tags",
+        "payload"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "record_type": {
+          "const": "statement"
+        },
+        "record_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lifecycle": {
+          "enum": [
+            "captured",
+            "active",
+            "resolved",
+            "superseded",
+            "consolidated",
+            "retired"
+          ]
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created_by_actor_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "last_material_change_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "source_revision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "statement",
+            "materiality",
+            "capture_state",
+            "source_turn_ref"
+          ],
+          "properties": {
+            "statement": {
+              "type": "string"
+            },
+            "materiality": {
+              "enum": [
+                "material",
+                "non_material",
+                "undetermined"
+              ]
+            },
+            "capture_state": {
+              "enum": [
+                "raw_captured",
+                "semantically_processed",
+                "retired"
+              ]
+            },
+            "source_turn_ref": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ideaRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "record_type",
+        "record_revision",
+        "lifecycle",
+        "created_at",
+        "created_by_actor_id",
+        "last_material_change_at",
+        "provenance",
+        "source_revision_refs",
+        "tags",
+        "payload"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "record_type": {
+          "const": "idea"
+        },
+        "record_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lifecycle": {
+          "enum": [
+            "captured",
+            "active",
+            "resolved",
+            "superseded",
+            "consolidated",
+            "retired"
+          ]
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created_by_actor_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "last_material_change_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "source_revision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "idea",
+            "status"
+          ],
+          "properties": {
+            "idea": {
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "dialogue",
+                "analyzed",
+                "superseded",
+                "retired"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "questionRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "record_type",
+        "record_revision",
+        "lifecycle",
+        "created_at",
+        "created_by_actor_id",
+        "last_material_change_at",
+        "provenance",
+        "source_revision_refs",
+        "tags",
+        "payload"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "record_type": {
+          "const": "question"
+        },
+        "record_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lifecycle": {
+          "enum": [
+            "captured",
+            "active",
+            "resolved",
+            "superseded",
+            "consolidated",
+            "retired"
+          ]
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created_by_actor_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "last_material_change_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "source_revision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "question",
+            "status",
+            "answer",
+            "answered_by_actor_id"
+          ],
+          "properties": {
+            "question": {
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "open",
+                "answered",
+                "resolved",
+                "deferred",
+                "superseded"
+              ]
+            },
+            "answer": {
+              "$ref": "#/$defs/knowledgeValueString"
+            },
+            "answered_by_actor_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "analysisRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "record_type",
+        "record_revision",
+        "lifecycle",
+        "created_at",
+        "created_by_actor_id",
+        "last_material_change_at",
+        "provenance",
+        "source_revision_refs",
+        "tags",
+        "payload"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "record_type": {
+          "const": "analysis"
+        },
+        "record_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lifecycle": {
+          "enum": [
+            "captured",
+            "active",
+            "resolved",
+            "superseded",
+            "consolidated",
+            "retired"
+          ]
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created_by_actor_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "last_material_change_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "source_revision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "subject",
+            "analysis_statement",
+            "rationale_summary",
+            "status",
+            "evidence_refs"
+          ],
+          "properties": {
+            "subject": {
+              "type": "string"
+            },
+            "analysis_statement": {
+              "type": "string"
+            },
+            "rationale_summary": {
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "open",
+                "supported",
+                "contested",
+                "consolidated",
+                "superseded",
+                "resolved",
+                "deferred"
+              ]
+            },
+            "evidence_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "solutionRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "record_type",
+        "record_revision",
+        "lifecycle",
+        "created_at",
+        "created_by_actor_id",
+        "last_material_change_at",
+        "provenance",
+        "source_revision_refs",
+        "tags",
+        "payload"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "record_type": {
+          "const": "solution"
+        },
+        "record_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lifecycle": {
+          "enum": [
+            "captured",
+            "active",
+            "resolved",
+            "superseded",
+            "consolidated",
+            "retired"
+          ]
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created_by_actor_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "last_material_change_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "source_revision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "solution_statement",
+            "solution_kind",
+            "status",
+            "rationale_summary",
+            "problem_refs",
+            "affected_scope",
+            "tradeoffs",
+            "risks",
+            "preconditions",
+            "evidence_refs",
+            "alternative_solution_refs"
+          ],
+          "properties": {
+            "solution_statement": {
+              "type": "string"
+            },
+            "solution_kind": {
+              "enum": [
+                "design_solution",
+                "code_change",
+                "configuration_change",
+                "data_fix",
+                "process_change",
+                "workaround",
+                "migration",
+                "other"
+              ]
+            },
+            "status": {
+              "enum": [
+                "proposed",
+                "candidate",
+                "selected",
+                "rejected",
+                "deferred",
+                "superseded"
+              ]
+            },
+            "rationale_summary": {
+              "type": "string"
+            },
+            "problem_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "affected_scope": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "tradeoffs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "risks": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "preconditions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "evidence_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "alternative_solution_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "findingRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "record_type",
+        "record_revision",
+        "lifecycle",
+        "created_at",
+        "created_by_actor_id",
+        "last_material_change_at",
+        "provenance",
+        "source_revision_refs",
+        "tags",
+        "payload"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "record_type": {
+          "const": "finding"
+        },
+        "record_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lifecycle": {
+          "enum": [
+            "captured",
+            "active",
+            "resolved",
+            "superseded",
+            "consolidated",
+            "retired"
+          ]
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created_by_actor_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "last_material_change_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "source_revision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "finding_statement",
+            "evidence_refs"
+          ],
+          "properties": {
+            "finding_statement": {
+              "type": "string"
+            },
+            "evidence_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "requirementRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "record_type",
+        "record_revision",
+        "lifecycle",
+        "created_at",
+        "created_by_actor_id",
+        "last_material_change_at",
+        "provenance",
+        "source_revision_refs",
+        "tags",
+        "payload"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "record_type": {
+          "const": "requirement"
+        },
+        "record_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lifecycle": {
+          "enum": [
+            "captured",
+            "active",
+            "resolved",
+            "superseded",
+            "consolidated",
+            "retired"
+          ]
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created_by_actor_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "last_material_change_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "source_revision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "requirement_statement",
+            "scope",
+            "priority",
+            "maturity",
+            "target_release",
+            "acceptance_criteria"
+          ],
+          "properties": {
+            "requirement_statement": {
+              "type": "string"
+            },
+            "scope": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "priority": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "maturity": {
+              "enum": [
+                "dialogue",
+                "analyzed",
+                "approved",
+                "ready_for_execution",
+                "in_implementation",
+                "runtime_verification",
+                "closed"
+              ]
+            },
+            "target_release": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "acceptance_criteria": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "decisionRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "record_type",
+        "record_revision",
+        "lifecycle",
+        "created_at",
+        "created_by_actor_id",
+        "last_material_change_at",
+        "provenance",
+        "source_revision_refs",
+        "tags",
+        "payload"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "record_type": {
+          "const": "decision"
+        },
+        "record_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lifecycle": {
+          "enum": [
+            "captured",
+            "active",
+            "resolved",
+            "superseded",
+            "consolidated",
+            "retired"
+          ]
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created_by_actor_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "last_material_change_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "source_revision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "decision_statement",
+            "decision_status",
+            "rationale_summary",
+            "selected_solution_refs",
+            "alternative_refs"
+          ],
+          "properties": {
+            "decision_statement": {
+              "type": "string"
+            },
+            "decision_status": {
+              "enum": [
+                "proposed",
+                "approved",
+                "superseded",
+                "rejected",
+                "deferred"
+              ]
+            },
+            "rationale_summary": {
+              "type": "string"
+            },
+            "selected_solution_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "alternative_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "taskRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "record_type",
+        "record_revision",
+        "lifecycle",
+        "created_at",
+        "created_by_actor_id",
+        "last_material_change_at",
+        "provenance",
+        "source_revision_refs",
+        "tags",
+        "payload"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "record_type": {
+          "const": "task"
+        },
+        "record_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lifecycle": {
+          "enum": [
+            "captured",
+            "active",
+            "resolved",
+            "superseded",
+            "consolidated",
+            "retired"
+          ]
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created_by_actor_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "last_material_change_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "source_revision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "task_statement",
+            "status",
+            "priority",
+            "priority_class",
+            "priority_basis",
+            "execution_order",
+            "execution_order_scope",
+            "assignee_actor_ids",
+            "solution_refs"
+          ],
+          "properties": {
+            "task_statement": {
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "captured",
+                "analysis",
+                "approved",
+                "in_progress",
+                "implemented_pending_runtime_verification",
+                "blocked",
+                "deferred",
+                "superseded",
+                "done"
+              ]
+            },
+            "priority": {
+              "enum": [
+                "P0",
+                "P1",
+                "P2",
+                "P3",
+                "unassigned"
+              ]
+            },
+            "priority_class": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "priority_basis": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "execution_order": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "execution_order_scope": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "assignee_actor_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "solution_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "evidenceRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "record_type",
+        "record_revision",
+        "lifecycle",
+        "created_at",
+        "created_by_actor_id",
+        "last_material_change_at",
+        "provenance",
+        "source_revision_refs",
+        "tags",
+        "payload"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "record_type": {
+          "const": "evidence"
+        },
+        "record_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lifecycle": {
+          "enum": [
+            "captured",
+            "active",
+            "resolved",
+            "superseded",
+            "consolidated",
+            "retired"
+          ]
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created_by_actor_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "last_material_change_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "source_revision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "evidence_type",
+            "source_ref",
+            "source_revision_ref",
+            "derivation_class",
+            "observed_at"
+          ],
+          "properties": {
+            "evidence_type": {
+              "type": "string"
+            },
+            "source_ref": {
+              "type": "string"
+            },
+            "source_revision_ref": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "derivation_class": {
+              "enum": [
+                "direct_observation",
+                "extracted",
+                "inferred",
+                "semantic",
+                "generated_summary",
+                "human_attestation"
+              ]
+            },
+            "observed_at": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "verificationRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "record_type",
+        "record_revision",
+        "lifecycle",
+        "created_at",
+        "created_by_actor_id",
+        "last_material_change_at",
+        "provenance",
+        "source_revision_refs",
+        "tags",
+        "payload"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "record_type": {
+          "const": "verification"
+        },
+        "record_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lifecycle": {
+          "enum": [
+            "captured",
+            "active",
+            "resolved",
+            "superseded",
+            "consolidated",
+            "retired"
+          ]
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created_by_actor_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "last_material_change_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "source_revision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "verification_type",
+            "subject_refs",
+            "result",
+            "evidence_refs",
+            "performed_by_actor_id",
+            "occurred_at",
+            "recorded_at",
+            "limitations"
+          ],
+          "properties": {
+            "verification_type": {
+              "enum": [
+                "source_inspection",
+                "build",
+                "automated_test",
+                "integration_test",
+                "runtime_test",
+                "user_acceptance_test",
+                "manual_review",
+                "data_validation",
+                "other"
+              ]
+            },
+            "subject_refs": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "result": {
+              "enum": [
+                "pass",
+                "fail",
+                "partial",
+                "inconclusive",
+                "not_run"
+              ]
+            },
+            "evidence_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "performed_by_actor_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "occurred_at": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "recorded_at": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "limitations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "acceptanceRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "record_type",
+        "record_revision",
+        "lifecycle",
+        "created_at",
+        "created_by_actor_id",
+        "last_material_change_at",
+        "provenance",
+        "source_revision_refs",
+        "tags",
+        "payload"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "record_type": {
+          "const": "acceptance"
+        },
+        "record_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lifecycle": {
+          "enum": [
+            "captured",
+            "active",
+            "resolved",
+            "superseded",
+            "consolidated",
+            "retired"
+          ]
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created_by_actor_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "last_material_change_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "source_revision_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "subject_refs",
+            "acceptance_type",
+            "status",
+            "accepted_by_actor_id",
+            "occurred_at",
+            "recorded_at",
+            "basis_evidence_refs",
+            "basis_verification_refs",
+            "conditions"
+          ],
+          "properties": {
+            "subject_refs": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "acceptance_type": {
+              "enum": [
+                "owner_acceptance",
+                "runtime_acceptance",
+                "release_acceptance",
+                "requirement_acceptance",
+                "conditional_acceptance",
+                "other"
+              ]
+            },
+            "status": {
+              "enum": [
+                "pending",
+                "accepted",
+                "accepted_with_conditions",
+                "rejected",
+                "revoked"
+              ]
+            },
+            "accepted_by_actor_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "occurred_at": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "recorded_at": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "basis_evidence_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "basis_verification_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "conditions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "relationship": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relationship_id",
+        "relationship_type",
+        "from_ref",
+        "to_ref",
+        "status",
+        "provenance"
+      ],
+      "properties": {
+        "relationship_id": {
+          "type": "string"
+        },
+        "relationship_type": {
+          "enum": [
+            "related_to",
+            "depends_on",
+            "blocks",
+            "implements",
+            "implemented_by",
+            "verifies",
+            "supports",
+            "conflicts_with",
+            "differs_from",
+            "derived_from",
+            "supersedes",
+            "consolidates",
+            "consolidated_by",
+            "solves",
+            "selected_by"
+          ]
+        },
+        "from_ref": {
+          "type": "string"
+        },
+        "to_ref": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "active",
+            "resolved",
+            "superseded",
+            "retired"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        }
+      }
+    },
+    "changeEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "change_event_id",
+        "record_id",
+        "change_type",
+        "record_revision_before",
+        "record_revision_after",
+        "occurred_at",
+        "recorded_at",
+        "actor_id",
+        "session_id",
+        "reason"
+      ],
+      "properties": {
+        "change_event_id": {
+          "type": "string"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "change_type": {
+          "type": "string"
+        },
+        "record_revision_before": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "record_revision_after": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "occurred_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "recorded_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "actor_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "session_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "evolutionEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evolution_id",
+        "artifact_id",
+        "parent_artifact_ids",
+        "created_at",
+        "summary",
+        "added_record_ids",
+        "changed_record_ids",
+        "resolved_record_ids",
+        "superseded_record_ids"
+      ],
+      "properties": {
+        "evolution_id": {
+          "type": "string"
+        },
+        "artifact_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "parent_artifact_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "added_record_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "changed_record_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "resolved_record_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "superseded_record_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

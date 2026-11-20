@@ -1,0 +1,123 @@
+{
+  "_pes": {
+    "standard": "PES-13",
+    "schema_revision": "13.0.0",
+    "schema_digest": "cd6d8b9c2750cab4dc99dcaad1cc665c0c23e3c57957af7f6acbc6c1408ec32f",
+    "semantic_rules_digest": "f8cc485724c5f81e9808b36b3d575f07a7f191d8e820c091ba6eeb5c38da6227",
+    "compatibility_profile_digest": "b6eda627088d50e3e4ecfa532484f4832d269c914fe622432b321abf734fe990"
+  },
+  "minimum_embedded_contract": {
+    "purpose": "Preserve project intent, knowledge, analysis, candidate solutions, decisions, task priorities, provenance and evolution so a new human/AI can continue correctly without prior chat history.",
+    "core_rules": [
+      "Do not infer Product Purpose when owner-confirmed purpose is missing.",
+      "Do not silently overwrite parallel/conflicting/historically material knowledge.",
+      "Unknown or unavailable facts must remain explicit; never fabricate provenance or priority.",
+      "Analysis, Solution, Decision, Requirement, Task, Verification and Acceptance are distinct meanings.",
+      "A candidate Solution is not selected without an attributable Decision.",
+      "Every new Task carries P0/P1/P2/P3/unassigned; use unassigned instead of guessing.",
+      "Priority is not authorization, and priority is separate from execution_order.",
+      "Verification is not Acceptance; build/test/runtime success does not itself mean Done where acceptance is required.",
+      "No acknowledged material user intent may remain only in conversation history.",
+      "An Analysis Overlay advances analysis knowledge without claiming a new software release.",
+      "A declared canonical PE store/channel must be read before material mutation.",
+      "A stale PE writer must merge rather than overwrite newer canonical state."
+    ]
+  },
+  "project": {
+    "project_id": null,
+    "project_name": null,
+    "namespace": null,
+    "created_identity": {
+      "value": null,
+      "knowledge_state": "not_yet_determined"
+    }
+  },
+  "artifact": {
+    "artifact_id": null,
+    "profile": "bootstrap_template",
+    "lifecycle": "active",
+    "lineage_role": "root",
+    "acceptance_state": "draft",
+    "created_at": "2026-11-11T13:16:08Z",
+    "lineage": {
+      "parent_artifact_ids": []
+    },
+    "base_artifact_id": null,
+    "analysis_overlay_revision": null,
+    "source_modification_authorized": false,
+    "semantic_hash": null,
+    "semantic_hash_profile": null
+  },
+  "release_context": {
+    "software_release": null,
+    "project_evolution_version": null,
+    "base_project_evolution_version": null
+  },
+  "coordination": {
+    "canonical_store_type": "unconfigured",
+    "canonical_store_ref": null,
+    "startup_document_ref": "PROJECT-EVOLUTION-START-HERE-PES-13.md",
+    "write_concurrency": "unconfigured",
+    "commit_contract_ref": null
+  },
+  "purpose": {
+    "primary_goal": {
+      "value": null,
+      "knowledge_state": "not_yet_determined"
+    },
+    "problem": {
+      "value": null,
+      "knowledge_state": "not_yet_determined"
+    },
+    "success_criteria": [],
+    "intent_notes": []
+  },
+  "actors": [],
+  "sessions": [],
+  "codebases": [],
+  "source_revisions": [],
+  "records": {
+    "statements": [],
+    "ideas": [],
+    "questions": [],
+    "analyses": [],
+    "solutions": [],
+    "findings": [],
+    "requirements": [],
+    "decisions": [],
+    "tasks": [],
+    "evidence": [],
+    "verifications": [],
+    "acceptances": []
+  },
+  "relationships": [],
+  "material_change_events": [],
+  "open_state": {
+    "open_question_ids": [],
+    "open_conflict_relationship_ids": [],
+    "blocked_record_ids": [],
+    "next_work_record_ids": [],
+    "candidate_solution_ids": []
+  },
+  "evolution_ledger": [
+    {
+      "evolution_id": "EVO-BOOTSTRAP",
+      "artifact_id": null,
+      "parent_artifact_ids": [],
+      "created_at": "2026-11-11T13:16:08Z",
+      "summary": "Empty PES-13 bootstrap template created; identity, purpose, priority and coordination are intentionally not inferred.",
+      "added_record_ids": [],
+      "changed_record_ids": [],
+      "resolved_record_ids": [],
+      "superseded_record_ids": []
+    }
+  ],
+  "continuation": {
+    "current_summary": "Bootstrap only. Obtain owner-confirmed project identity/purpose and configure coordination/startup contract before canonicalization.",
+    "must_read_record_ids": [],
+    "known_limits": [
+      "Not yet a canonical project snapshot.",
+      "Project identity, Product Purpose and canonical coordination channel are intentionally unset."
+    ]
+  }
+}

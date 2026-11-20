@@ -1,0 +1,135 @@
+{
+  "standard": "PES-13",
+  "schema_revision": "13.0.0",
+  "north_star": "Preserve project meaning, analytical reasoning, provenance, decisions, requirements, task priority, verification and continuation state in a portable form that remains usable independently of any single chat, tool, repository or execution provider.",
+  "record_meanings": {
+    "statement": "Near-literal or faithful capture of material user/project input.",
+    "question": "An unresolved or answered question that matters to project continuation.",
+    "analysis": "Reasoning that explains, interprets, compares or evaluates project facts.",
+    "finding": "A supported observation or defect/problem statement.",
+    "solution": "A proposed remedy or design response, distinct from a decision.",
+    "decision": "An attributable selection, rejection, deferral or supersession of a course of action.",
+    "requirement": "A condition the system/project must satisfy.",
+    "task": "Executable work derived from approved/authorized project knowledge.",
+    "evidence": "Observed or source-bound support for project knowledge.",
+    "verification": "An observed check/result; does not equal acceptance.",
+    "acceptance": "Authorized acceptance by an appropriate owner/user/role."
+  },
+  "priority_contract": {
+    "canonical_levels": {
+      "P0": "Critical — security, data-integrity, catastrophic reliability or system-blocking work that may preempt the normal queue.",
+      "P1": "High — major functional/reliability work normally scheduled before medium/low work.",
+      "P2": "Medium — architecture, maintainability, UX, performance or normal product work unless explicitly escalated.",
+      "P3": "Low — cosmetic, formatting, low-impact cleanup or deferrable refinement.",
+      "unassigned": "Priority has not been authoritatively assigned; never guess."
+    },
+    "migration_aliases_only": {
+      "critical": "P0",
+      "high": "P1",
+      "medium": "P2",
+      "low": "P3"
+    }
+  },
+  "invariants": [
+    {
+      "id": "SEM-ID-001",
+      "severity": "error",
+      "rule": "Canonical snapshots and analysis overlays MUST have non-null project_id and artifact_id."
+    },
+    {
+      "id": "SEM-PURPOSE-001",
+      "severity": "error",
+      "rule": "Canonical snapshots MUST preserve owner-confirmed Product Purpose when known; do not infer it solely from source/features/architecture."
+    },
+    {
+      "id": "SEM-RECORD-001",
+      "severity": "error",
+      "rule": "Material record_id values MUST be unique within an artifact."
+    },
+    {
+      "id": "SEM-CAPTURE-001",
+      "severity": "error",
+      "rule": "No acknowledged material user intent may remain conversation-only; persist a faithful capture and derived material records with provenance."
+    },
+    {
+      "id": "SEM-SOLUTION-001",
+      "severity": "error",
+      "rule": "Solution is distinct from Analysis, Decision, Requirement, Task, Verification and Acceptance."
+    },
+    {
+      "id": "SEM-SOLUTION-002",
+      "severity": "error",
+      "rule": "A proposed Solution MUST NOT be treated as selected merely because it is newer, AI-generated or experimentally implemented."
+    },
+    {
+      "id": "SEM-OVERLAY-001",
+      "severity": "error",
+      "rule": "An analysis_overlay advances analysis knowledge without claiming a new software release."
+    },
+    {
+      "id": "SEM-OVERLAY-002",
+      "severity": "error",
+      "rule": "If development advances beyond an overlay base, merge overlay knowledge onto the latest valid canonical PE by stable IDs/provenance/conflict checks; never replace newer PE with the old overlay base."
+    },
+    {
+      "id": "SEM-PRIORITY-001",
+      "severity": "error",
+      "rule": "Every new Task MUST carry priority=P0|P1|P2|P3|unassigned. Use unassigned instead of guessing."
+    },
+    {
+      "id": "SEM-PRIORITY-002",
+      "severity": "error",
+      "rule": "Priority is not implementation authorization."
+    },
+    {
+      "id": "SEM-PRIORITY-003",
+      "severity": "error",
+      "rule": "Priority and execution_order are separate. Priority expresses importance/urgency; execution_order expresses queue order within a context."
+    },
+    {
+      "id": "SEM-PRIORITY-004",
+      "severity": "error",
+      "rule": "Dependencies, blockers, safety/data-integrity constraints and explicit owner direction may override queue order; record the reason."
+    },
+    {
+      "id": "SEM-PRIORITY-005",
+      "severity": "error",
+      "rule": "Changing a Task priority is a material change and MUST preserve provenance/change history."
+    },
+    {
+      "id": "SEM-COORD-001",
+      "severity": "error",
+      "rule": "If a project declares a canonical Project Evolution store/channel, participating writers MUST read the latest canonical state before material mutation."
+    },
+    {
+      "id": "SEM-COORD-002",
+      "severity": "error",
+      "rule": "A stale writer MUST NOT overwrite newer canonical PE state; it must fetch, compare/merge and preserve parallel/conflicting material knowledge."
+    },
+    {
+      "id": "SEM-ONBOARD-001",
+      "severity": "error",
+      "rule": "A declared startup_document_ref is the deterministic onboarding entry point and SHOULD explain how to discover current PE state, role, source alignment and open work."
+    },
+    {
+      "id": "SEM-COMMIT-001",
+      "severity": "warning",
+      "rule": "When PE is maintained in commit-based version control, every material PE commit SHOULD state artifact/revision, change type, material summary, affected records, source context, verification and acceptance state."
+    },
+    {
+      "id": "SEM-VERIFY-001",
+      "severity": "error",
+      "rule": "Verification and Acceptance are distinct; build/test/runtime success MUST NOT imply owner/user acceptance."
+    },
+    {
+      "id": "SEM-HISTORY-001",
+      "severity": "error",
+      "rule": "Compaction MAY reduce verbosity but MUST preserve material derivation chains needed to recover why important decisions/tasks exist."
+    },
+    {
+      "id": "SEM-UNKNOWN-001",
+      "severity": "error",
+      "rule": "Missing historical provenance/priority/purpose MUST remain explicitly unknown/unassigned; never fabricate it."
+    }
+  ]
+}
