@@ -1,0 +1,19 @@
+{
+  "standard": "PES-14",
+  "schema_revision": "14.0.0",
+  "migration_from": [
+    "PES-13",
+    "PES-12",
+    "PES-11"
+  ],
+  "rules": [
+    "Migration is additive and non-destructive.",
+    "Preserve PES-13 stable IDs, provenance, relationships, material history and Task priority.",
+    "Do not infer BusinessRule or TechnicalContract from ambiguous historical text.",
+    "Finding identity remains stable; add category/profile only when supported.",
+    "Current Architecture and Current Operational Context are derived views.",
+    "Deployment/runtime facts become timestamped Observations.",
+    "Missing scope/freshness remains unknown.",
+    "Verification remains distinct from Acceptance."
+  ]
+}

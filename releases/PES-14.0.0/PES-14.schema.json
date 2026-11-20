@@ -1,0 +1,337 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-evolution.dev/schema/pes-14.schema.json",
+  "title": "Project Evolution Standard PES-14",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "_pes",
+    "project",
+    "artifact",
+    "release_context",
+    "coordination",
+    "purpose",
+    "scopes",
+    "records",
+    "relationships",
+    "views",
+    "retrieval",
+    "open_state",
+    "continuation"
+  ],
+  "properties": {
+    "_pes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "standard",
+        "schema_revision",
+        "schema_digest",
+        "semantic_rules_digest",
+        "compatibility_profile_digest"
+      ],
+      "properties": {
+        "standard": {
+          "const": "PES-14"
+        },
+        "schema_revision": {
+          "const": "14.0.0"
+        },
+        "schema_digest": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "semantic_rules_digest": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "compatibility_profile_digest": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "project_id",
+        "project_name",
+        "namespace"
+      ],
+      "properties": {
+        "project_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "project_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "namespace": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_id",
+        "profile",
+        "lifecycle",
+        "lineage_role",
+        "acceptance_state",
+        "created_at",
+        "parent_artifact_ids",
+        "base_artifact_id",
+        "source_modification_authorized"
+      ],
+      "properties": {
+        "artifact_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "profile": {
+          "enum": [
+            "bootstrap_template",
+            "canonical_snapshot",
+            "analysis_overlay"
+          ]
+        },
+        "lifecycle": {
+          "enum": [
+            "active",
+            "historical",
+            "retired"
+          ]
+        },
+        "lineage_role": {
+          "enum": [
+            "root",
+            "branch",
+            "merge",
+            "canonical_head",
+            "overlay"
+          ]
+        },
+        "acceptance_state": {
+          "enum": [
+            "draft",
+            "accepted",
+            "rejected"
+          ]
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "parent_artifact_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "base_artifact_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_modification_authorized": {
+          "type": "boolean"
+        }
+      }
+    },
+    "release_context": {
+      "type": "object"
+    },
+    "coordination": {
+      "type": "object"
+    },
+    "purpose": {
+      "type": "object"
+    },
+    "scopes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "scope_id",
+          "scope_type",
+          "name",
+          "parent_scope_ref",
+          "status"
+        ],
+        "properties": {
+          "scope_id": {
+            "type": "string"
+          },
+          "scope_type": {
+            "enum": [
+              "domain",
+              "module",
+              "feature",
+              "entity",
+              "service",
+              "integration",
+              "environment",
+              "codebase",
+              "other"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "parent_scope_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "enum": [
+              "active",
+              "superseded",
+              "retired",
+              "unknown"
+            ]
+          }
+        }
+      }
+    },
+    "records": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "statements",
+        "ideas",
+        "questions",
+        "analyses",
+        "solutions",
+        "findings",
+        "business_rules",
+        "technical_contracts",
+        "requirements",
+        "decisions",
+        "tasks",
+        "evidence",
+        "verifications",
+        "acceptances",
+        "observations"
+      ],
+      "properties": {
+        "statements": {
+          "type": "array"
+        },
+        "ideas": {
+          "type": "array"
+        },
+        "questions": {
+          "type": "array"
+        },
+        "analyses": {
+          "type": "array"
+        },
+        "solutions": {
+          "type": "array"
+        },
+        "findings": {
+          "type": "array"
+        },
+        "business_rules": {
+          "type": "array"
+        },
+        "technical_contracts": {
+          "type": "array"
+        },
+        "requirements": {
+          "type": "array"
+        },
+        "decisions": {
+          "type": "array"
+        },
+        "tasks": {
+          "type": "array"
+        },
+        "evidence": {
+          "type": "array"
+        },
+        "verifications": {
+          "type": "array"
+        },
+        "acceptances": {
+          "type": "array"
+        },
+        "observations": {
+          "type": "array"
+        }
+      }
+    },
+    "relationships": {
+      "type": "array"
+    },
+    "views": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "current_architecture",
+        "current_operational_context"
+      ],
+      "properties": {
+        "current_architecture": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "current_operational_context": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      }
+    },
+    "retrieval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contracts",
+        "default_contract_ref"
+      ],
+      "properties": {
+        "contracts": {
+          "type": "array"
+        },
+        "default_contract_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "open_state": {
+      "type": "object"
+    },
+    "continuation": {
+      "type": "object"
+    }
+  }
+}

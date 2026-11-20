@@ -1,0 +1,47 @@
+{
+  "package": "PES-14 Portable Starter Pack",
+  "standard": "PES-14",
+  "schema_revision": "14.0.0",
+  "generated_at": "2026-11-19T06:32:15Z",
+  "validation": {
+    "json_parse": "PASS",
+    "bootstrap_against_schema": "PASS"
+  },
+  "files": [
+    {
+      "name": "PES-14-STANDARD.md",
+      "sha256": "8f7add1a2a3c30e62d7b6f77789aba64c6f3cac261def4bab03e2124fc67f6a9",
+      "size_bytes": 3501
+    },
+    {
+      "name": "PES-14.schema.json",
+      "sha256": "0461a63f0a08f299a0f8ece052f38cdc8848a1437b6f2d102be6ab0f187e4c7f",
+      "size_bytes": 6874
+    },
+    {
+      "name": "PES-14.semantic-rules.json",
+      "sha256": "375af191f6fb9a8b17db77a347419b89cd649b18a90849561d03e54ffb4c6497",
+      "size_bytes": 2970
+    },
+    {
+      "name": "PES-14.compatibility-profile.json",
+      "sha256": "62b52c8a14ceaf6ac5816e8c6dacaa25d6880c01c69e8ed63020b6fa248468e9",
+      "size_bytes": 704
+    },
+    {
+      "name": "Project-Evolution-Empty-Bootstrap-PES-14.json",
+      "sha256": "d4c3b2862ff62deba101db7934e6adbcc130c086b61115f15de0b8362779649e",
+      "size_bytes": 3163
+    },
+    {
+      "name": "PROJECT-EVOLUTION-START-HERE-PES-14.md",
+      "sha256": "15f03eae5deed1d5aef5035c17aeac72f272d76ad02e54ccfd76e6111d9dea17",
+      "size_bytes": 3789
+    },
+    {
+      "name": "README-INTEGRATION.md",
+      "sha256": "0a61550d3adb330c2dbcf6ac4f31abc47aeca95060872307ebbd1d7b0cdc5f7b",
+      "size_bytes": 583
+    }
+  ]
+}

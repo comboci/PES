@@ -1,0 +1,85 @@
+{
+  "standard": "PES-14",
+  "schema_revision": "14.0.0",
+  "invariants": [
+    {
+      "id": "SEM-CAPTURE-001",
+      "rule": "Material intent must not remain conversation-only; persist it with provenance."
+    },
+    {
+      "id": "SEM-SOLUTION-001",
+      "rule": "Solution is distinct from Analysis, Decision, Requirement, Task, Verification and Acceptance."
+    },
+    {
+      "id": "SEM-SOLUTION-002",
+      "rule": "A proposed Solution is not selected without an attributable Decision."
+    },
+    {
+      "id": "SEM-BR-001",
+      "rule": "BusinessRule is a durable domain rule and must remain distinct from Decision rationale and Requirement history."
+    },
+    {
+      "id": "SEM-TC-001",
+      "rule": "TechnicalContract should reference the authoritative definition/revision/digest instead of creating an unnecessary second authoritative copy."
+    },
+    {
+      "id": "SEM-FINDING-001",
+      "rule": "Code review, implementation and runtime findings remain Finding records with profiles/categories; do not create duplicate parallel finding entities."
+    },
+    {
+      "id": "SEM-SCOPE-001",
+      "rule": "Known scope uses stable scope identities; unknown scope is not guessed."
+    },
+    {
+      "id": "SEM-FRESH-001",
+      "rule": "Derived current-state views and runtime/deployment observations must carry freshness/validity metadata."
+    },
+    {
+      "id": "SEM-VIEW-001",
+      "rule": "Derived views are rebuildable projections, not independent competing truth stores."
+    },
+    {
+      "id": "SEM-OBS-001",
+      "rule": "Deployment/runtime state is an observation at a time from a source; stale observations must not be presented as live state."
+    },
+    {
+      "id": "SEM-RETRIEVAL-001",
+      "rule": "Retrieval/context packages preserve traceability and must not become a parallel knowledge store."
+    },
+    {
+      "id": "SEM-RETRIEVAL-002",
+      "rule": "Retrieval must distinguish proposed, active, superseded, conflicted and unknown states and report source mismatch/incomplete context."
+    },
+    {
+      "id": "SEM-PRIORITY-001",
+      "rule": "Every new Task has P0/P1/P2/P3/unassigned; never guess."
+    },
+    {
+      "id": "SEM-PRIORITY-002",
+      "rule": "Priority is not authorization and is distinct from execution_order."
+    },
+    {
+      "id": "SEM-VERIFY-001",
+      "rule": "Verification and Acceptance are distinct."
+    },
+    {
+      "id": "SEM-COORD-001",
+      "rule": "A stale writer must merge/reconcile rather than overwrite newer canonical state."
+    },
+    {
+      "id": "SEM-HISTORY-001",
+      "rule": "Migration/compaction preserves material derivation, stable IDs, provenance and rationale."
+    },
+    {
+      "id": "SEM-SECRET-001",
+      "rule": "Secrets, passwords, tokens and private keys must not be stored in PE."
+    }
+  ],
+  "task_priority_contract": {
+    "P0": "Critical",
+    "P1": "High",
+    "P2": "Medium",
+    "P3": "Low",
+    "unassigned": "Not authoritatively assigned"
+  }
+}
