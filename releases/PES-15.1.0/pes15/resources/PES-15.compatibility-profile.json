@@ -1,0 +1,34 @@
+{
+  "standard": "PES-15",
+  "revision": "15.1.0",
+  "support": {
+    "native": [
+      "PES-15/15.1.0"
+    ],
+    "opt_in_copy_migration": [
+      "PES-14",
+      "PES-15/15.0.0"
+    ],
+    "never_mutate_in_place": [
+      "PES-14",
+      "PES-15/15.0.0"
+    ],
+    "not_automatically_supported": [
+      "PES-13",
+      "PES-12",
+      "PES-11"
+    ]
+  },
+  "rules": [
+    "PES-14 remains independently deployable with its existing schema and starter.",
+    "No implicit upgrade, downgrade, or rewriting of PES-14 canonical stores.",
+    "Migration creates a separate PES-15 snapshot with the source digest and preserved IDs, records and facts.",
+    "Historic missing priority and observation timestamps remain unknown, explicitly allowlisted as immutable legacy exceptions.",
+    "No guessed scope, freshness, acceptance, verification, provenance or priority.",
+    "A distinct PES-15 full-context retrieval contract is added without replacing the legacy default.",
+    "Schema changes for future versions require separate compatibility negotiation and migration tooling.",
+    "PES-15.0.0 canonical stores remain pinned to their original engine; phase-isolated PES-15.1.0 requires an explicit new-copy upgrade.",
+    "Legacy tasks without structured workflow have unknown independent phase states and are never auto-classified as fixed, tested or approved.",
+    "Prioritization is a separate workflow phase and cannot mark an implementation deliverable completed."
+  ]
+}

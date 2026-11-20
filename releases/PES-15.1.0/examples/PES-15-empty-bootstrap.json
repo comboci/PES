@@ -1,0 +1,126 @@
+{
+  "_pes": {
+    "standard": "PES-15",
+    "schema_revision": "15.1.0",
+    "schema_digest": "cc46dcde143c129a5707f541912e5f1c45310c72ae0039f2ecc312e7b7a5a78e",
+    "semantic_rules_digest": "899be541239232ac6b59d63377274f56d4eb70f947a13da464d1e4c86948d835",
+    "compatibility_profile_digest": "24c8fa0816ecc77f02e13a2ddd75dc0ab18d65d099de41c1d7946ce20952fd24",
+    "legacy_exceptions": {
+      "task_priority_missing": [],
+      "observation_time_missing": [],
+      "relationship_legacy_indices": [],
+      "task_workflow_missing": []
+    }
+  },
+  "project": {
+    "project_id": null,
+    "project_name": null,
+    "namespace": null
+  },
+  "artifact": {
+    "artifact_id": null,
+    "profile": "bootstrap_template",
+    "lifecycle": "active",
+    "lineage_role": "root",
+    "acceptance_state": "draft",
+    "created_at": null,
+    "parent_artifact_ids": [],
+    "base_artifact_id": null,
+    "source_modification_authorized": false
+  },
+  "release_context": {
+    "software_release": null,
+    "project_evolution_version": "15.1.0",
+    "base_project_evolution_version": null
+  },
+  "coordination": {
+    "canonical_store_type": "unconfigured",
+    "canonical_store_ref": null,
+    "startup_document_ref": "PES-15-START-HERE.md",
+    "write_concurrency": "sqlite_cas_v1"
+  },
+  "purpose": {
+    "primary_goal": {
+      "value": null,
+      "knowledge_state": "not_yet_determined"
+    },
+    "problem": {
+      "value": null,
+      "knowledge_state": "not_yet_determined"
+    },
+    "success_criteria": [],
+    "intent_notes": []
+  },
+  "scopes": [],
+  "records": {
+    "statements": [],
+    "ideas": [],
+    "questions": [],
+    "analyses": [],
+    "solutions": [],
+    "findings": [],
+    "business_rules": [],
+    "technical_contracts": [],
+    "requirements": [],
+    "decisions": [],
+    "tasks": [],
+    "evidence": [],
+    "verifications": [],
+    "acceptances": [],
+    "observations": []
+  },
+  "relationships": [],
+  "views": {
+    "current_architecture": null,
+    "current_operational_context": null
+  },
+  "retrieval": {
+    "contracts": [
+      {
+        "contract_id": "RETRIEVAL-PES15-FULL",
+        "title": "Complete PES-15 traceable continuation context",
+        "subject_scope_refs": [],
+        "include_record_types": [
+          "statement",
+          "idea",
+          "question",
+          "analysis",
+          "solution",
+          "finding",
+          "business_rule",
+          "technical_contract",
+          "requirement",
+          "decision",
+          "task",
+          "evidence",
+          "verification",
+          "acceptance",
+          "observation"
+        ],
+        "required_views": [
+          "current_architecture",
+          "current_operational_context"
+        ],
+        "relationship_depth": 2,
+        "current_only": false,
+        "require_source_alignment": true,
+        "output_profile": "standard"
+      }
+    ],
+    "default_contract_ref": "RETRIEVAL-PES15-FULL"
+  },
+  "open_state": {
+    "open_question_ids": [],
+    "open_conflict_relationship_ids": [],
+    "blocked_record_ids": [],
+    "next_work_record_ids": [],
+    "candidate_solution_ids": []
+  },
+  "continuation": {
+    "current_summary": "PES-15 bootstrap only; not a canonical assessment.",
+    "must_read_record_ids": [],
+    "known_limits": [
+      "Project and authoritative source not configured."
+    ]
+  }
+}

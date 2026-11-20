@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PES-15.1 — نمایش مستقل مراحل تسک</title>
+<style>
+  :root {color-scheme:light; --ink:#192737; --muted:#556779; --line:#d6e0e8; --surface:#f6f9fc; --accent:#096b8b; --soft:#e8f4f8;}
+  * {box-sizing:border-box}
+  body{margin:0;background:var(--surface);font:15px/1.85 Tahoma,"Segoe UI",sans-serif;color:var(--ink)}
+  main{max-width:960px;margin:0 auto;padding:32px 16px 80px}
+  header{padding-bottom:20px;border-bottom:1px solid var(--line)}
+  h1{font-size:25px;margin:0 0 4px} h2{font-size:17px;margin:0 0 5px} p{margin:4px 0 12px}
+  .eyebrow{color:var(--accent);font-size:13px;font-weight:700;letter-spacing:.2px}
+  .muted{color:var(--muted)} .controls{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:24px 0}
+  .field{display:grid;gap:5px;flex:1;min-width:230px} label{font-size:13px;font-weight:700}
+  input,select{border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);padding:11px;font:inherit;width:100%;min-height:48px}
+  .summary{border:1px solid var(--line);background:white;border-radius:12px;padding:16px 18px;margin:12px 0 20px}
+  .caption{font-size:12px;color:var(--muted)} .chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:11px}
+  .chip{padding:3px 10px;background:var(--soft);border-radius:20px;font-size:12px;font-weight:700;color:#135d76}
+  .phase-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .phase{border:1px solid var(--line);background:#fff;border-radius:12px;padding:18px;min-height:145px;border-right:4px solid #b5c4d0}
+  .phase.is-complete{border-right-color:#188567}.phase.is-pending{border-right-color:#d1a02b}
+  .phase small{color:var(--muted);font-size:12px}.phase strong{display:inline-block;margin-bottom:8px;font-size:14px}
+  .badge{border:1px solid var(--line);border-radius:30px;padding:2px 10px;font-size:12px;color:var(--ink);font-weight:bold}
+  .sub{font-size:13px;color:var(--muted);margin-top:8px}
+  .note{margin:20px 0;padding:16px 18px;border:1px dashed #bbccd8;border-radius:12px;font-size:13px;color:var(--muted)}
+  .not-loaded{padding:18px;background:#fff;border:1px solid var(--line);border-radius:10px}
+  @media(max-width:620px){.phase-grid{grid-template-columns:1fr}h1{font-size:20px}}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">Project Evolution Standard · PES-15.1</div>
+    <h1>نمایش مستقل مراحل تسک</h1>
+    <p class="muted">اولویت‌بندی، اصلاح، آزمون و پذیرش هرکدام وضعیت جدا دارند؛ هیچ‌کدام از دیگری نتیجه‌گیری نمی‌شود.</p>
+  </header>
+  <section class="controls" aria-label="انتخاب داده">
+    <div class="field"><label for="json">بازکردن فایل PES-15 از رایانه (فقط خواندنی)</label><input id="json" type="file" accept=".json,application/json"></div>
+    <div class="field"><label for="task">تسک</label><select id="task"></select></div>
+  </section>
+  <section class="summary" aria-label="خلاصه تسک">
+    <div id="taskTitle"><strong>مثال نمایشی: اصلاح یک مشکل</strong></div>
+    <div class="caption" id="taskId">TASK-STAGE-CORRECTION · داده آزمایشی، نه وضعیت واقعی</div>
+    <div class="chips" id="summaryChips"></div>
+  </section>
+  <section aria-label="مراحل مستقل" class="phase-grid" id="phases"></section>
+  <aside class="note">این صفحه فقط یک پیش‌نمایش آفلاین HTML است و هیچ فایلی را تغییر نمی‌دهد. رنگ، رتبه و متن قدیمی «completed» هرگز به معنی اصلاح یا تأیید نیست. صحت شواهد و گذر از Validation باید جداگانه با موتور PES-15 سنجیده شود. این پیش‌نمایش به Portfolio Builder متصل نیست.</aside>
+</main>
+<script>
+(() => {
+  'use strict';
+  const keys=['analysis','prioritization','implementation','verification','acceptance'];
+  const names=['تحلیل','اولویت‌بندی / رتبه‌بندی','اجرا / اصلاح','راستی‌آزمایی / تست','پذیرش نهایی'];
+  const success={analysis:'completed',prioritization:'completed',implementation:'completed',verification:'passed',acceptance:'accepted'};
+  const labels={not_started:'شروع نشده',not_requested:'درخواست نشده',pending:'در انتظار',in_progress:'در حال انجام',completed:'تکمیل شده',passed:'موفق',failed:'ناموفق',accepted:'تأیید شده',rejected:'رد شده',blocked:'مسدود'};
+  const example={record_id:'TASK-STAGE-CORRECTION',title:'مثال: اصلاح یک مشکل (فقط اولویت‌بندی انجام شده)',priority:'P1',status:'planned',workflow:{deliverable_phase:'implementation',phases:{
+    analysis:{state:'not_started',record_refs:[],source_revision_refs:[]},prioritization:{state:'completed',record_refs:['DEC-STAGE-PROOF'],source_revision_refs:[]},
+    implementation:{state:'not_started',record_refs:[],source_revision_refs:[]},verification:{state:'not_started',record_refs:[],source_revision_refs:[]},acceptance:{state:'not_requested',record_refs:[],source_revision_refs:[]}
+  }}};
+  let tasks=[example];
+  const chooser=document.getElementById('task'), cards=document.getElementById('phases'), chips=document.getElementById('summaryChips');
+  function tag(text,holder){const el=document.createElement('span');el.className='chip';el.textContent=text;holder.appendChild(el)}
+  function setTask(t){
+    document.getElementById('taskTitle').textContent=t.title||'بدون عنوان';
+    document.getElementById('taskId').textContent=t.record_id||'شناسه نامعلوم';
+    chips.replaceChildren();cards.replaceChildren();
+    const flow=t.workflow, valid=flow&&typeof flow==='object'&&flow.phases&&keys.every(k=>flow.phases[k]&&typeof flow.phases[k].state==='string');
+    const target=valid&&keys.includes(flow.deliverable_phase)?flow.deliverable_phase:null;
+    tag('اولویت: '+(t.priority||'نامعلوم'),chips);
+    tag('خروجی تسک: '+(target?names[keys.indexOf(target)]:'نامعلوم'),chips);
+    const done=target?flow.phases[target].state===success[target]:null;
+    tag('خروجی تحویل‌شده: '+(done===null?'نامعلوم':done?'بله':'خیر'),chips);
+    for(let i=0;i<keys.length;i++){
+      const k=keys[i],phase=valid?flow.phases[k]:null,st=phase?phase.state:null;
+      const card=document.createElement('article');card.className='phase '+(st===success[k]?'is-complete':'is-pending');
+      const title=document.createElement('h2');title.textContent=names[i];card.appendChild(title);
+      const badge=document.createElement('strong');badge.className='badge';badge.textContent=st?(labels[st]||st):'نامعلوم (تاریخی)';card.appendChild(badge);
+      const info=document.createElement('div');info.className='sub';
+      info.textContent='شواهد ثبت‌شده: '+(phase&&Array.isArray(phase.record_refs)?phase.record_refs.length:0)+' · ارجاع سورس: '+(phase&&Array.isArray(phase.source_revision_refs)?phase.source_revision_refs.length:0);card.appendChild(info);
+      cards.appendChild(card);
+    }
+  }
+  function populate(){chooser.replaceChildren();tasks.forEach((r,i)=>{const op=document.createElement('option');op.value=String(i);op.textContent=(r.record_id||'?')+' · '+(r.title||'بدون عنوان');chooser.appendChild(op)});if(tasks.length)setTask(tasks[0])}
+  chooser.addEventListener('change',()=>setTask(tasks[Number(chooser.value)]));
+  document.getElementById('json').addEventListener('change',async ev=>{
+    const file=ev.target.files&&ev.target.files[0];if(!file)return;
+    try{
+      const parsed=JSON.parse(await file.text());
+      if(parsed?._pes?.standard!=='PES-15'||!Array.isArray(parsed?.records?.tasks))throw new Error('فایل PES-15 معتبر شناسایی نشد');
+      tasks=parsed.records.tasks;
+      if(!tasks.length){alert('تسکی در فایل وجود ندارد');tasks=[example]}
+      populate();
+    }catch(err){alert('خطا در خواندن فایل: '+err.message)}
+  });
+  populate();
+})();
+</script>
+</body>
+</html>

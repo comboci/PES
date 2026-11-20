@@ -1,0 +1,139 @@
+{
+  "format": "PES-15-CONTEXT-1",
+  "source_artifact_id": "PES14-PORTFOLIO-REPRESENTATIVE-TEST-FIXTURE",
+  "project_id": "NSP-PORTFOLIO-BUILDER",
+  "contract_id": "RETRIEVAL-PES15-FULL",
+  "subject_scope": "SC-STORAGE",
+  "records": {
+    "statements": [],
+    "ideas": [],
+    "questions": [],
+    "analyses": [],
+    "solutions": [
+      {
+        "record_id": "SOL-001",
+        "title": "Implementation direction",
+        "detail": "Use system-wide template entities and dependency tracking; propagate master changes to all descendants. Model assets, project ownership and usage references separately in SQLite; apply foreign keys and transactional cascades plus guarded asset garbage collection.",
+        "scope_refs": [
+          "SC-STORAGE"
+        ],
+        "status": "approved_intent",
+        "provenance": {
+          "type": "user_conversation",
+          "date": "2026-11-19"
+        },
+        "implementation_state": "unverified_against_live_source"
+      }
+    ],
+    "findings": [],
+    "business_rules": [],
+    "technical_contracts": [],
+    "requirements": [],
+    "decisions": [],
+    "tasks": [
+      {
+        "record_id": "TASK-DEMO-LEGACY-001",
+        "title": "Synthetic historical task lacking priority",
+        "detail": "Demo-only record to exercise PES-14 historical missing priority; not a claim about an actual repository task.",
+        "scope_refs": [
+          "SC-STORAGE"
+        ],
+        "status": "planned",
+        "provenance": {
+          "type": "fixture_synthetic",
+          "date": "2026-11-19"
+        },
+        "implementation_state": "not_implemented"
+      }
+    ],
+    "evidence": [],
+    "verifications": [],
+    "acceptances": [],
+    "observations": []
+  },
+  "traceability": [
+    {
+      "record_id": "SOL-001",
+      "record_type": "solution",
+      "selection_reason": "scope",
+      "included": true,
+      "provenance": {
+        "type": "user_conversation",
+        "date": "2026-11-19"
+      },
+      "implementation_state": "unverified_against_live_source"
+    },
+    {
+      "record_id": "TASK-DEMO-LEGACY-001",
+      "record_type": "task",
+      "selection_reason": "scope",
+      "included": true,
+      "provenance": {
+        "type": "fixture_synthetic",
+        "date": "2026-11-19"
+      },
+      "implementation_state": "not_implemented"
+    }
+  ],
+  "task_progress": {
+    "TASK-DEMO-LEGACY-001": {
+      "record_id": "TASK-DEMO-LEGACY-001",
+      "workflow_known": false,
+      "deliverable_complete": null,
+      "implementation_complete": null,
+      "verification_passed": null,
+      "owner_accepted": null,
+      "phase_states": null,
+      "deliverable_phase": null
+    }
+  },
+  "derived_views": {
+    "current_architecture": {
+      "freshness_state": "unknown",
+      "note": "Fixture: not source-aligned"
+    },
+    "current_operational_context": {
+      "freshness_state": "unknown",
+      "note": "Fixture: not an operational live observation"
+    }
+  },
+  "warnings": [
+    {
+      "code": "UNVERIFIED_SOURCE_ALIGNMENT",
+      "detail": "current_architecture: freshness unknown; source repository has not been checked against revision",
+      "view": "current_architecture"
+    },
+    {
+      "code": "UNVERIFIED_SOURCE_ALIGNMENT",
+      "detail": "current_operational_context: freshness unknown; source repository has not been checked against revision",
+      "view": "current_operational_context"
+    },
+    {
+      "code": "HISTORIC_PRIORITY_UNKNOWN",
+      "detail": "Migrated tasks lack recorded priority",
+      "record_ids": [
+        "TASK-DEMO-LEGACY-001"
+      ]
+    },
+    {
+      "code": "HISTORIC_OBSERVATION_TIME_UNKNOWN",
+      "detail": "Migrated observations lack observed_at",
+      "record_ids": [
+        "OBS-001"
+      ]
+    },
+    {
+      "code": "TASK_PHASES_HISTORIC_UNKNOWN",
+      "detail": "Historic task statuses cannot establish prioritization, implementation, verification or acceptance",
+      "record_ids": [
+        "TASK-DEMO-LEGACY-001"
+      ]
+    },
+    {
+      "code": "NO_OWNER_ACCEPTANCE_EVIDENCE",
+      "detail": "No explicit Acceptance records; Task completion and Verification do not imply acceptance"
+    }
+  ],
+  "canonical_authority": "source snapshot (context is read-only and rebuildable)",
+  "claim_of_live_source_alignment": false
+}

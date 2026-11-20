@@ -1,0 +1,24 @@
+{
+  "source": "GitHub connector; comboci/NSP-Portfolio-Builder; main; project evolution/Project-Evolution-V1-PES-14.json",
+  "observation_date": "2026-11-20",
+  "source_blob_sha": "29ce3b4d309581a6974d10ea366155c8e8b4f243",
+  "record_count": 125,
+  "scope_count": 10,
+  "relationship_count": 0,
+  "task_count": 31,
+  "tasks_without_priority": 31,
+  "observation_count": 35,
+  "observations_without_observed_at": 35,
+  "detected_duplicate_record_ids": 0,
+  "detected_internal_reference_errors": 0,
+  "view_freshness": {
+    "current_architecture": "source_prepared_runtime_unknown",
+    "current_operational_context": "unknown"
+  },
+  "scope": "Read-only live repo scan of record IDs, required record fields, Scope references, related_record_ids, evidence_refs, open_state references and Retrieval contract types. Not a Python PES-15 full migration run.",
+  "limitations": [
+    "The repository file may change after this observation.",
+    "Actual runtime and owner Acceptance of Portfolio Builder were not tested.",
+    "The local PES-15 example is representative and includes one synthetic test-only Task."
+  ]
+}

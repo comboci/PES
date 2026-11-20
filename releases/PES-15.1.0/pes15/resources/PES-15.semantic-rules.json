@@ -1,0 +1,83 @@
+{
+  "standard": "PES-15",
+  "revision": "15.1.0",
+  "machine_enforced": [
+    "SCHEMA-IDENTITY",
+    "RECORD-UNIQUENESS",
+    "SCOPE-REFERENCES",
+    "RECORD-REFERENCES",
+    "RELATIONSHIP-REFERENCES",
+    "RETRIEVAL-REFERENCES",
+    "NEW-TASK-PRIORITY",
+    "NEW-OBSERVATION-TIME",
+    "PRESERVE-HISTORY",
+    "CAS-WRITES",
+    "ATOMIC-HISTORY",
+    "METADATA-DIGESTS",
+    "PROTECT-LEGACY-EXCEPTIONS",
+    "SCOPE-ACYCLIC",
+    "TASK-WORKFLOW-ISOLATION",
+    "TASK-DELIVERABLE-GATES",
+    "TASK-PHASE-EVIDENCE-TYPES",
+    "TASK-LEGACY-WORKFLOW-UNKNOWN",
+    "TASK-WORKFLOW-BASELINE-INTEGRITY"
+  ],
+  "reported_not_inferred": [
+    "SOURCE-FRESHNESS",
+    "AUTHORITATIVE-ACCEPTANCE",
+    "EVIDENCE-SUFFICIENCY",
+    "EXTERNAL-SOURCE-ALIGNMENT",
+    "UNKNOWN-LEGACY-DATA"
+  ],
+  "axioms": [
+    "Verification never means owner acceptance.",
+    "Priority never authorizes execution.",
+    "A derived view cannot supersede canonical records.",
+    "Source, provenance, and legacy unknowns are not invented.",
+    "Migrating to PES-15 does not modify the PES-14 original or its consumers.",
+    "Proposals are distinct from decisions; code changes are distinct from runtime verification.",
+    "Unknown and stale information cannot be represented as verified live truth.",
+    "Canonical snapshots are never silently compacted or overwritten.",
+    "Classification, prioritization, implementation, verification and acceptance are independent per-task phases.",
+    "A finished prioritization phase never implies implemented, verified, accepted or closed work.",
+    "A task is deliverable-complete only for its explicitly declared deliverable_phase, not on account of its rank or color.",
+    "Implementation completed means the change/output was produced; it is not evidence of passed tests or owner approval.",
+    "Migrated tasks with no phase data remain workflow-unknown; historic status or implementation_state must not be reinterpreted as phase evidence.",
+    "Verification passed requires an explicit Verification record; owner acceptance requires an explicit Acceptance record.",
+    "A task-phase update must change only the requested phase and cannot silently advance other phases."
+  ],
+  "task_priorities": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "unassigned"
+  ],
+  "relationship_types": [
+    "depends_on",
+    "blocks",
+    "implements",
+    "supports",
+    "verifies",
+    "accepts",
+    "supersedes",
+    "conflicts_with",
+    "derives_from",
+    "relates_to"
+  ],
+  "task_phases": [
+    "analysis",
+    "prioritization",
+    "implementation",
+    "verification",
+    "acceptance"
+  ],
+  "task_phase_success": {
+    "analysis": "completed",
+    "prioritization": "completed",
+    "implementation": "completed",
+    "verification": "passed",
+    "acceptance": "accepted"
+  },
+  "task_delivery_policy": "task deliverable completion is evaluated from workflow.deliverable_phase only; status is a legacy descriptive field, never an implicit state machine"
+}

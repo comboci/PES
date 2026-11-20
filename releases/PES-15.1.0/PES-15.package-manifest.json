@@ -1,0 +1,216 @@
+{
+  "standard": "PES-15",
+  "schema_revision": "15.1.0",
+  "package_role": "standalone_reference_implementation",
+  "build_date": "2026-11-20",
+  "legacy_PES14_original_zip_sha256": "1a25c34d07c3548c70078a050a4ded130d25e7f252536fe0c6159fca3118732e",
+  "legacy_PES14_mutated": false,
+  "manifest_self_excluded": true,
+  "files": [
+    {
+      "path": ".gitignore",
+      "size_bytes": 88,
+      "sha256": "d1f6480f0fb462c0d125a7cbe4b2ed75021946b64f5fb119d22632058c62e1fa"
+    },
+    {
+      "path": "CHANGELOG-PES-15-FA.md",
+      "size_bytes": 4323,
+      "sha256": "63a861a2fe247b0ecec4f04fdc7faf270302734695f9aa0dbf2fb198ca1e9512"
+    },
+    {
+      "path": "PES-15-STANDARD.md",
+      "size_bytes": 12234,
+      "sha256": "91345383f1bae50df36d7359461368663323b83c0b134918e1d522ceee38e6d9"
+    },
+    {
+      "path": "PES-15-START-HERE.md",
+      "size_bytes": 1970,
+      "sha256": "51d6aff8fea2d7a6dd6be8bb410b851102bb1814def14a6ed470a16dd7ef7a1e"
+    },
+    {
+      "path": "PORTFOLIO-BUILDER-INTEGRATION-FA.md",
+      "size_bytes": 7059,
+      "sha256": "01ac3caa13ef3e11fd77eb778665c7d29b5039a432e5c8268b25cb3250f2469a"
+    },
+    {
+      "path": "README-FA.md",
+      "size_bytes": 12702,
+      "sha256": "fff3f1f98388f956019101a1afbe521486a62afdfbcb5ceaee8bfe6ffa650908"
+    },
+    {
+      "path": "Run-PES15-Demo.cmd",
+      "size_bytes": 546,
+      "sha256": "9a753d13a9fa8a84bb566d1b28505cb07c30b607e41f6798da096b7d8399838e"
+    },
+    {
+      "path": "Run-PES15-Tests.cmd",
+      "size_bytes": 542,
+      "sha256": "502621f392fcb63bb803761f54a2111c0ac6a50ebf005281407d207e35913dda"
+    },
+    {
+      "path": "TEST-RESULTS-PES-15.md",
+      "size_bytes": 3218,
+      "sha256": "7eeb0670c8e123ed74af2029a469e75a12df14b46efe0e8be1b4d43d6dafef74"
+    },
+    {
+      "path": "examples/GITHUB-READONLY-AUDIT-2026-11-20.json",
+      "size_bytes": 1115,
+      "sha256": "bb02442183a8af5ee2db3cdc69c07d00a1be61302341c9dd31a60acb395ee69d"
+    },
+    {
+      "path": "examples/PES-15-empty-bootstrap.json",
+      "size_bytes": 3341,
+      "sha256": "0f2d27897eda936513783136c7e2f585cdc34a01759f5a973119f2f31cca5381"
+    },
+    {
+      "path": "examples/PES-15-stage-isolation-example.json",
+      "size_bytes": 11734,
+      "sha256": "21fe4504750628088ca2da8b584a98c4a6843f4d64c0d9cb191c89239c8af7af"
+    },
+    {
+      "path": "examples/portfolio_builder_demo_run/context_pes15.json",
+      "size_bytes": 4279,
+      "sha256": "0753ede6bd74aaa917a0b7ab71d5c9c80864b65abaa578a264cf12fce9d1edbf"
+    },
+    {
+      "path": "examples/portfolio_builder_demo_run/demo_backup.sqlite",
+      "size_bytes": 32768,
+      "sha256": "50b91b534f640595b2d6b5c8e4071284480e4e921347b6cc4b5652eb50e555e7"
+    },
+    {
+      "path": "examples/portfolio_builder_demo_run/demo_canonical.sqlite",
+      "size_bytes": 32768,
+      "sha256": "8f3f8e480301977012d9dfeb116a3ce73879e315c3a1dbc6232583c05725c2a4"
+    },
+    {
+      "path": "examples/portfolio_builder_demo_run/demo_head.json",
+      "size_bytes": 11336,
+      "sha256": "1550208dacd0dad0aec58c87a0f09dd4d90230b593635bc1f1f605d6f2dd8d39"
+    },
+    {
+      "path": "examples/portfolio_builder_demo_run/integration_report.json",
+      "size_bytes": 2051,
+      "sha256": "3aac247d4088f5f424dd3730ee809a91cbab2fce5bff21093d663101932253b8"
+    },
+    {
+      "path": "examples/portfolio_builder_demo_run/migrated_pes15.json",
+      "size_bytes": 9922,
+      "sha256": "aebfe7b5653d504a3849ec21b982a148aa25ace63250f4cef0edfcd27ba86f86"
+    },
+    {
+      "path": "examples/portfolio_builder_legacy_v14_demo.json",
+      "size_bytes": 8510,
+      "sha256": "3e41aa056055a063d02f2429be2f156d138b571475d1f0fc319ff76b76173011"
+    },
+    {
+      "path": "examples/portfolio_builder_migrated_v15_demo.json",
+      "size_bytes": 9922,
+      "sha256": "aebfe7b5653d504a3849ec21b982a148aa25ace63250f4cef0edfcd27ba86f86"
+    },
+    {
+      "path": "examples/task-workflow-sections.html",
+      "size_bytes": 8306,
+      "sha256": "11442d484b3da1f58b25b1c69b189aed80b856dc6b7bdb1278d93752b964aa59"
+    },
+    {
+      "path": "integration/github/PES15-adoption-notes.md",
+      "size_bytes": 851,
+      "sha256": "22a19b6443f75e10d8a28b08d88f02345a84d382ea6998729d431e103bfa48da"
+    },
+    {
+      "path": "pes15/__init__.py",
+      "size_bytes": 95,
+      "sha256": "864f19b734efbb61aa9711dc2b8be2b0fbde3da56c25ebfc6aa2b482da1328b2"
+    },
+    {
+      "path": "pes15/__main__.py",
+      "size_bytes": 47,
+      "sha256": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4"
+    },
+    {
+      "path": "pes15/cli.py",
+      "size_bytes": 10018,
+      "sha256": "4d435a441182f366ef71430809cf9acd7f640b196bb482be9c14007b4758fd88"
+    },
+    {
+      "path": "pes15/core.py",
+      "size_bytes": 4876,
+      "sha256": "fba3e11fef90c0717359a47595c869aa5daea6486de0d9a04920d0c97ebdbcab"
+    },
+    {
+      "path": "pes15/migration.py",
+      "size_bytes": 5598,
+      "sha256": "f6771906df6d0112e08124e8786b257b8a49b1a1d91c2c2621cbddd3ac805820"
+    },
+    {
+      "path": "pes15/resources/PES-15.compatibility-profile.json",
+      "size_bytes": 1476,
+      "sha256": "24c8fa0816ecc77f02e13a2ddd75dc0ab18d65d099de41c1d7946ce20952fd24"
+    },
+    {
+      "path": "pes15/resources/PES-15.schema.json",
+      "size_bytes": 23135,
+      "sha256": "cc46dcde143c129a5707f541912e5f1c45310c72ae0039f2ecc312e7b7a5a78e"
+    },
+    {
+      "path": "pes15/resources/PES-15.semantic-rules.json",
+      "size_bytes": 2976,
+      "sha256": "899be541239232ac6b59d63377274f56d4eb70f947a13da464d1e4c86948d835"
+    },
+    {
+      "path": "pes15/retrieval.py",
+      "size_bytes": 6889,
+      "sha256": "cdb0cf4045bbe2f855682b0a0f24a2d66f0c36a033a26664c4a1aeee29326908"
+    },
+    {
+      "path": "pes15/store.py",
+      "size_bytes": 10811,
+      "sha256": "7e293a3b3ae562bae23c9e7d9d6189fac9382560f8ed3706e03f262231866c4f"
+    },
+    {
+      "path": "pes15/task_workflow.py",
+      "size_bytes": 4996,
+      "sha256": "d01895f119d16ba1fbe83e14706e573579e24afca79975c99faa7f1cc1bbe98b"
+    },
+    {
+      "path": "pes15/validation.py",
+      "size_bytes": 29355,
+      "sha256": "0fcb9b01d20c00831179d9de444f75330d8639d65e6abd0fc232c5dde9feeaa3"
+    },
+    {
+      "path": "pyproject.toml",
+      "size_bytes": 503,
+      "sha256": "f396ff29deafb4c75f5adbafbd27f99184e34c3c81d3a595bbfa542225ec2d76"
+    },
+    {
+      "path": "requirements.txt",
+      "size_bytes": 20,
+      "sha256": "48bdd1a500202e6cd681cb6e978b2c525ce9fb262013f8ff4a9bd2bb46419130"
+    },
+    {
+      "path": "tests/test_pes15_engine.py",
+      "size_bytes": 26853,
+      "sha256": "22a33ae3c9e88899a709a858bd1a7f27d47331651dac5ee40fabf5c12fca9ecd"
+    },
+    {
+      "path": "tests/test_task_workflow.py",
+      "size_bytes": 16525,
+      "sha256": "681a73238a3a0031c04185bd36fe0a5221b040312238b846bb496a63993fe154"
+    },
+    {
+      "path": "tools/build_examples.py",
+      "size_bytes": 6720,
+      "sha256": "c97203259c480464a46a0751227d4b998f33692513622784a46333fd9a5fdb20"
+    },
+    {
+      "path": "tools/build_manifest.py",
+      "size_bytes": 1307,
+      "sha256": "1d101633302b34bc1afcfecaf2c7f0c8091f4914049905767313919671272570"
+    },
+    {
+      "path": "tools/evaluate_portfolio_builder.py",
+      "size_bytes": 6404,
+      "sha256": "7df8bb19f1f2ae4a11b7cd965958dc8d7b9393a8d17947a5a4f0f955b092ed05"
+    }
+  ]
+}
